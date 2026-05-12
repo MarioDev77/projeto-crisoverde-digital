@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crisoverde Digital — Educação para um Futuro Sustentável</title>
+  <link rel="stylesheet" href="style/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- SEO -->
+  <meta name="description" content="Crisoverde Digital — Educação ambiental que transforma conhecimento em ação real. Jogos, gamificação e impacto social em Crisópolis, Bahia.">
+  <meta name="keywords" content="Crisoverde Digital, educação ambiental, reciclagem, sustentabilidade, Crisópolis, Bahia, jogos educativos">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Crisoverde Digital — Educação para um Futuro Sustentável">
+  <meta property="og:description" content="Transformando consciência ambiental em comportamento real através de jogos e experiências digitais.">
+  <meta property="og:type" content="website">
+</head>
+<body>
+
+  <!-- LOADER -->
+  <div class="loader" id="loader">
+    <div class="loader-inner">
+      <div class="loader-icon">🌿</div>
+      <div class="loader-bar"><div class="loader-fill"></div></div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <div class="nav-logos">
+        <img src="img/logo-escola.png" alt="Colégio Estadual Eudóxia Maria" class="nav-logo escola-logo">
+        <img src="img/bandeira-bahia.png" alt="Governo da Bahia" class="nav-logo govba-logo">
+        <span class="nav-brand">CRISO<span class="brand-verde">VERDE</span> <span class="brand-digital">DIGITAL</span></span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#proposito">Propósito</a></li>
+        <li><a href="#video">Vídeo</a></li>
+        <li><a href="#jogos">Jogos</a></li>
+        <li><a href="#ods">ODS</a></li>
+        <li><a href="#depoimentos">Depoimentos</a></li>
+        <li><a href="https://crisomoeda.netlify.app" target="_blank" class="nav-cta">🪙 Crisomoeda</a></li>
+      </ul>
+      <button class="nav-menu-btn" id="menuBtn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-mobile" id="navMobile">
+      <ul>
+        <li><a href="#proposito" class="mob-link">Propósito</a></li>
+        <li><a href="#video" class="mob-link">Vídeo</a></li>
+        <li><a href="#jogos" class="mob-link">Jogos</a></li>
+        <li><a href="#ods" class="mob-link">ODS</a></li>
+        <li><a href="#depoimentos" class="mob-link">Depoimentos</a></li>
+        <li><a href="https://crisomoeda.netlify.app" target="_blank" class="mob-link">🪙 Crisomoeda</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero hero-centered" id="inicio">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-orbs">
+      <div class="orb orb1"></div>
+      <div class="orb orb2"></div>
+      <div class="orb orb3"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge reveal-hero">
+        <span class="badge-dot"></span>
+        ♻ Projeto Educacional &amp; Sustentável · Crisópolis, Bahia
+      </div>
+      <h1 class="hero-title reveal-hero delay-1">
+        <span class="criso">CRISO</span><span class="verde">VERDE</span>
+        <span class="digital">DIGITAL</span>
+      </h1>
+      <div class="hero-leaf-spin reveal-hero delay-2">🌿</div>
+      <p class="hero-tagline reveal-hero delay-2">Educar. Conscientizar. <em>Transformar.</em></p>
+      <p class="hero-desc reveal-hero delay-3">
+        Você sabe reciclar… mas será que pratica? Nossa pesquisa revelou que
+        <strong>74%</strong> da população sabe identificar recicláveis, mas apenas
+        <strong>13,8%</strong> realiza a separação efetiva. O Crisoverde Digital
+        atua exatamente nesse descompasso.
+      </p>
+      <div class="hero-buttons reveal-hero delay-4">
+        <a href="#proposito" class="btn btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/></svg>
+          Conheça o Projeto
+        </a>
+        <a href="#jogos" class="btn btn-outline">🎮 Jogar Agora</a>
+        <a href="https://crisomoeda.netlify.app" target="_blank" class="btn btn-gold">
+          🪙 Crisomoeda
+        </a>
+      </div>
+      <div class="hero-stats reveal-hero delay-5">
+        <div class="stat">
+          <span class="stat-num">83,7%</span>
+          <span class="stat-label">Acesso à coleta</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">74%</span>
+          <span class="stat-label">Sabem identificar</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">13,8%</span>
+          <span class="stat-label">Praticam de fato</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">4</span>
+          <span class="stat-label">ODS alinhadas</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROPÓSITO -->
+  <section class="proposito" id="proposito">
+    <div class="container">
+      <div class="proposito-grid">
+        <div class="proposito-text">
+          <div class="section-label reveal">Nosso Propósito</div>
+          <h2 class="section-title dark-text reveal">Transformando consciência em ação</h2>
+          <p class="reveal">O <strong>CRISOVERDE DIGITAL</strong> nasceu para transformar educação ambiental em comportamento real.</p>
+          <p class="reveal">Mais do que ensinar, nosso projeto cria experiências práticas e digitais capazes de desenvolver hábitos sustentáveis e gerar impacto positivo na comunidade de Crisópolis e região.</p>
+          <p class="reveal">Acreditamos que a mudança começa quando o conhecimento encontra a experiência — e é exatamente isso que construímos: <strong>pontes entre o saber e o fazer.</strong></p>
+          <div class="proposito-tags reveal">
+            <span class="ptag">♻ Reciclagem</span>
+            <span class="ptag">📚 Educação</span>
+            <span class="ptag">🌱 Sustentabilidade</span>
+            <span class="ptag">🎮 Gamificação</span>
+            <span class="ptag">🌍 Impacto Social</span>
+          </div>
+        </div>
+        <div class="proposito-visual reveal delay-2">
+          <div class="paradoxo-card">
+            <div class="paradoxo-label">O Paradoxo Ambiental</div>
+            <div class="paradoxo-stat big">
+              <span class="paradoxo-num">13,8%</span>
+              <span class="paradoxo-desc">realizam a separação efetiva do lixo</span>
+            </div>
+            <div class="paradoxo-vs">
+              <div class="paradoxo-item">
+                <span class="p-num green">74%</span>
+                <span class="p-label">sabem identificar recicláveis</span>
+              </div>
+              <div class="paradoxo-arrow">→</div>
+              <div class="paradoxo-item">
+                <span class="p-num gold">13,8%</span>
+                <span class="p-label">praticam de fato</span>
+              </div>
+            </div>
+            <div class="paradoxo-footer">
+              💡 O Crisoverde Digital fecha essa lacuna
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VÍDEO / PERSONAGENS -->
+  <section class="video-section" id="video">
+    <div class="hero-grid-bg" style="opacity:0.5"></div>
+    <div class="container" style="position:relative;z-index:2">
+      <div class="video-grid">
+        <div class="video-left reveal">
+          <div class="section-label light">Conheça os Personagens</div>
+          <h2 class="section-title reveal">CRISOMAN <span class="verde">+</span> CRISOGIRL</h2>
+          <blockquote class="video-quote reveal delay-1">
+            "Aprender é o primeiro passo. Agora imagine ganhar por fazer o certo?"
+          </blockquote>
+          <p class="video-desc reveal delay-2">
+            Nossos personagens guiam você por uma jornada de conscientização ambiental — divertida, interativa e recompensadora. Conheça também a Crisomoeda, nossa forma de reconhecer quem age pelo planeta.
+          </p>
+          <a href="https://crisomoeda.netlify.app" target="_blank" class="btn btn-gold reveal delay-3">
+            🪙 Conheça a Crisomoeda
+          </a>
+        </div>
+        <div class="video-right reveal delay-2">
+          <div class="video-embed">
+            <div class="video-placeholder">
+              <div class="video-icon">🎬</div>
+              <div class="play-btn" id="playBtn">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
+              <p class="video-caption">Vídeo institucional em breve</p>
+              <span class="video-sub">CRISOMAN + CRISOGIRL apresentam o projeto</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOGOS -->
+  <section class="jogos-section" id="jogos">
+    <div class="container">
+      <div class="section-top reveal">
+        <div class="section-label">Experiências Interativas</div>
+        <h2 class="section-title">Aprender jogando</h2>
+        <p class="section-subtitle">Dois jogos desenvolvidos para transformar educação ambiental em experiências memoráveis e significativas.</p>
+      </div>
+      <div class="jogos-grid">
+
+        <!-- Jogo 1 -->
+        <div class="jogo-card reveal">
+          <div class="jogo-img-area jogo-reciclagem">
+            <div class="jogo-img-icon">♻️</div>
+            <div class="jogo-glow-orb"></div>
+          </div>
+          <div class="jogo-body">
+            <div class="jogo-tag">⚡ Ação + Raciocínio</div>
+            <h3 class="jogo-title">Operação Reciclagem</h3>
+            <p class="jogo-desc">"Separe corretamente o lixo antes que ele polua a cidade!"</p>
+            <div class="jogo-meta">
+              <span class="jogo-badge">🎯 Separação Seletiva</span>
+              <span class="jogo-badge">⏱ Contra o tempo</span>
+            </div>
+            <a href="#" class="btn btn-primary jogo-btn" onclick="alert('Jogo em breve! Aguarde o lançamento. 🎮'); return false;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              JOGAR AGORA
+            </a>
+          </div>
+        </div>
+
+        <!-- Jogo 2 -->
+        <div class="jogo-card reveal delay-1">
+          <div class="jogo-img-area jogo-quiz">
+            <div class="jogo-img-icon">🌿</div>
+            <div class="jogo-glow-orb" style="background: radial-gradient(circle, rgba(240,192,96,0.3), transparent 60%);"></div>
+          </div>
+          <div class="jogo-body">
+            <div class="jogo-tag">💡 Quiz Educativo</div>
+            <h3 class="jogo-title">Quiz Sustentável</h3>
+            <p class="jogo-desc">"Teste seus conhecimentos e descubra o quanto você sabe sobre o planeta."</p>
+            <div class="jogo-meta">
+              <span class="jogo-badge">🧠 Conhecimento</span>
+              <span class="jogo-badge">🏆 Ranking</span>
+            </div>
+            <a href="#" class="btn btn-primary jogo-btn" onclick="alert('Jogo em breve! Aguarde o lançamento. 🌿'); return false;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              JOGAR AGORA
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ODS -->
+  <section class="ods-section" id="ods">
+    <div class="container">
+      <div class="ods-top reveal">
+        <div class="section-label light">Impacto Global</div>
+        <h2 class="section-title">Objetivos de Desenvolvimento Sustentável</h2>
+      </div>
+      <div class="ods-intro-grid">
+        <div class="ods-intro-card reveal">
+          <div class="ods-intro-icon">🌍</div>
+          <h3>O que são as ODS?</h3>
+          <p>As ODS são metas globais estabelecidas pela ONU para promover o desenvolvimento sustentável até 2030, abrangendo educação, cidades, consumo e ação climática.</p>
+        </div>
+        <div class="ods-intro-card reveal delay-1">
+          <div class="ods-intro-icon">🌿</div>
+          <h3>ODS e o Crisoverde Digital</h3>
+          <p>O Crisoverde Digital está alinhado aos ODS ao incentivar educação ambiental, conscientização e desenvolvimento de hábitos sustentáveis nas comunidades.</p>
+        </div>
+      </div>
+      <div class="ods-grid">
+        <div class="ods-card reveal" style="--ods-color:#E5243B">
+          <img src="img/ods4.jpeg" alt="ODS 4 — Educação de Qualidade" class="ods-img">
+          <div class="ods-num">ODS 4</div>
+          <h4>Educação de Qualidade</h4>
+          <p class="ods-desc">Promover educação inclusiva, equitativa e de qualidade para todos.</p>
+          <p class="ods-rel">O Crisoverde Digital promove educação ambiental acessível e gamificada para toda a comunidade.</p>
+        </div>
+        <div class="ods-card reveal delay-1" style="--ods-color:#FD9D24">
+          <img src="img/ods11.jpeg" alt="ODS 11 — Cidades Sustentáveis" class="ods-img">
+          <div class="ods-num">ODS 11</div>
+          <h4>Cidades e Comunidades Sustentáveis</h4>
+          <p class="ods-desc">Tornar cidades e comunidades mais inclusivas, seguras e sustentáveis.</p>
+          <p class="ods-rel">Contribuímos para a gestão adequada de resíduos e limpeza urbana em Crisópolis.</p>
+        </div>
+        <div class="ods-card reveal delay-2" style="--ods-color:#BF8B2E">
+          <img src="img/ods12.jpeg" alt="ODS 12 — Consumo Responsável" class="ods-img">
+          <div class="ods-num">ODS 12</div>
+          <h4>Consumo e Produção Responsáveis</h4>
+          <p class="ods-desc">Garantir padrões sustentáveis de consumo e produção.</p>
+          <p class="ods-rel">Nossos jogos incentivam diretamente a reciclagem e o reaproveitamento de materiais.</p>
+        </div>
+        <div class="ods-card reveal delay-3" style="--ods-color:#3F7E44">
+          <img src="img/ods 13.jpeg" alt="ODS 13 — Ação Climática" class="ods-img">
+          <div class="ods-num">ODS 13</div>
+          <h4>Ação Contra a Mudança Climática</h4>
+          <p class="ods-desc">Tomar medidas urgentes para combater as mudanças climáticas.</p>
+          <p class="ods-rel">Educando para a ação climática local como forma de impacto global real.</p>
+        </div>
+      </div>
+      <div class="ods-cta reveal">
+        <a href="https://crisomoeda.netlify.app" target="_blank" class="btn btn-crisomoeda">
+          🪙 Conheça também a Crisomoeda
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEPOIMENTOS -->
+  <section class="depoimentos-section" id="depoimentos">
+    <div class="container">
+      <div class="section-top reveal">
+        <div class="section-label">Depoimentos</div>
+        <h2 class="section-title dark-text">O que dizem os participantes</h2>
+      </div>
+      <div class="depo-grid">
+        <div class="depo-card reveal">
+          <div class="depo-stars">★★★★★</div>
+          <div class="depo-quote-mark">"</div>
+          <p class="depo-text">Depois de jogar, comecei a separar meu lixo corretamente em casa. Parece simples, mas nunca tinha prestado atenção nos detalhes — agora ensino minha família também.</p>
+          <div class="depo-author">
+            <div class="depo-avatar">AP</div>
+            <div>
+              <div class="depo-name">Ana Paula</div>
+              <div class="depo-role">Participante do projeto</div>
+            </div>
+          </div>
+        </div>
+        <div class="depo-card reveal delay-1">
+          <div class="depo-stars">★★★★★</div>
+          <div class="depo-quote-mark">"</div>
+          <p class="depo-text">Uma forma inteligente e divertida de aprender sustentabilidade. Os jogos são envolventes e você não percebe que está sendo educado — é entretenimento com propósito real.</p>
+          <div class="depo-author">
+            <div class="depo-avatar">RS</div>
+            <div>
+              <div class="depo-name">Rafael Santos</div>
+              <div class="depo-role">Estudante universitário</div>
+            </div>
+          </div>
+        </div>
+        <div class="depo-card reveal delay-2">
+          <div class="depo-stars">★★★★★</div>
+          <div class="depo-quote-mark">"</div>
+          <p class="depo-text">Como professora, usei o Crisoverde Digital na sala de aula. Foi transformador — os alunos se engajaram e o debate sobre meio ambiente nunca foi tão rico e natural.</p>
+          <div class="depo-author">
+            <div class="depo-avatar">MC</div>
+            <div>
+              <div class="depo-name">Maria Costa</div>
+              <div class="depo-role">Professora de Ciências</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA CRISOMOEDA -->
+  <section class="cta-crisomoeda" id="crisomoeda">
+    <div class="hero-grid-bg" style="opacity:0.4"></div>
+    <div class="hero-orbs">
+      <div class="orb" style="width:400px;height:400px;background:radial-gradient(circle,rgba(240,192,96,0.12),transparent 70%);top:-50px;left:50%;transform:translateX(-50%);animation-delay:0s;"></div>
+    </div>
+    <div class="container cta-content">
+      <div class="cta-coin reveal">🪙</div>
+      <div class="section-label light reveal" style="justify-content:center;">Inovação + Sustentabilidade</div>
+      <h2 class="section-title cta-title reveal">Conheça a <span class="gold-text">Crisomoeda</span></h2>
+      <p class="cta-desc reveal">Imagine ser recompensado por fazer o bem ao planeta. A Crisomoeda é nossa forma de reconhecer e valorizar cada ação sustentável — transformando hábitos ecológicos em valor real para quem pratica.</p>
+      <a href="https://crisomoeda.netlify.app" target="_blank" class="btn btn-gold btn-lg reveal">
+        🪙 Acessar a Crisomoeda
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="footer-logos">
+            <img src="img/logo-escola.png" alt="Colégio Estadual Eudóxia Maria" class="footer-logo">
+            <img src="img/bandeira-bahia.png" alt="Governo da Bahia" class="footer-logo govba-footer">
+          </div>
+          <p class="footer-name"><strong>Crisoverde Digital</strong></p>
+          <p class="footer-sub">Projeto Educacional e Sustentável</p>
+          <p class="footer-escola">Colégio Estadual de Tempo Integral Eudóxia Maria · Crisópolis, Bahia</p>
+          <div class="footer-social">
+            <a href="https://www.instagram.com/crisoverde" target="_blank" rel="noopener" class="social-link" title="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noopener" class="social-link" title="YouTube">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-links-col">
+          <h5>Navegação</h5>
+          <a href="#proposito">Propósito</a>
+          <a href="#video">Personagens</a>
+          <a href="#jogos">Jogos</a>
+          <a href="#ods">ODS</a>
+          <a href="#depoimentos">Depoimentos</a>
+        </div>
+        <div class="footer-links-col">
+          <h5>Projeto</h5>
+          <a href="#jogos">Operação Reciclagem</a>
+          <a href="#jogos">Quiz Sustentável</a>
+          <a href="https://crisomoeda.netlify.app" target="_blank">🪙 Crisomoeda</a>
+          <a href="https://www.instagram.com/crisoverde" target="_blank">Instagram</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-tag">Educar. Conscientizar. Transformar. 🌿</p>
+        <p>© 2026 Crisoverde Digital. Todos os direitos reservados.</p>
+        <p class="footer-dev">
+          Desenvolvido por
+          <a href="https://github.com/MarioDev77" target="_blank" rel="noopener" class="footer-dev-link">MarioDev77</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Loader
+    window.addEventListener('load', () => {
+      const loader = document.getElementById('loader');
+      setTimeout(() => loader.classList.add('hidden'), 900);
+    });
+
+    // Navbar scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const navMobile = document.getElementById('navMobile');
+    menuBtn.addEventListener('click', () => {
+      menuBtn.classList.toggle('open');
+      navMobile.classList.toggle('open');
+    });
+    document.querySelectorAll('.mob-link').forEach(l => {
+      l.addEventListener('click', () => {
+        menuBtn.classList.remove('open');
+        navMobile.classList.remove('open');
+      });
+    });
+
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal, .reveal-hero');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(r => observer.observe(r));
+
+    // Hero reveals immediately
+    document.querySelectorAll('.reveal-hero').forEach(el => {
+      setTimeout(() => el.classList.add('visible'), 100);
+    });
+
+    // Play button interaction
+    document.getElementById('playBtn').addEventListener('click', function() {
+      this.closest('.video-embed').innerHTML = `
+        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;background:rgba(62,207,142,0.08);border:1px solid rgba(62,207,142,0.2);border-radius:12px;">
+          <span style="font-size:3rem;">🎬</span>
+          <p style="color:var(--green-bright);font-family:'Playfair Display',serif;font-size:1.1rem;text-align:center;padding:0 2rem;">Vídeo institucional em breve!<br><span style="font-size:0.85rem;color:var(--gray-light);">Acompanhe nossas redes sociais.</span></p>
+        </div>`;
+    });
+  </script>
+</body>
+</html>
