@@ -692,21 +692,21 @@ a { text-decoration: none; color: inherit; }
 .footer {
   background: var(--green-deep);
   border-top: 1px solid rgba(62,207,142,0.12);
-  padding: 32px 0 0;
+  padding: 18px 0 0;
 }
 .footer-inner {
-  display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 32px;
-  padding-bottom: 28px;
+  display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px;
+  padding-bottom: 14px;
   border-bottom: 1px solid rgba(255,255,255,0.08);
   align-items: start;
 }
-.footer-logos { display: flex; gap: 10px; margin-bottom: 10px; }
+.footer-logos { display: flex; gap: 8px; margin-bottom: 6px; }
 .footer-logo {
-  width: 36px; height: 36px; object-fit: cover;
+  width: 28px; height: 28px; object-fit: cover;
   border-radius: 50%; border: 2px solid rgba(62,207,142,0.3);
 }
 .govba-footer { border-color: rgba(255,255,255,0.2); }
-.footer-name { font-family: var(--font-display); font-size: 0.95rem; color: var(--white); margin-bottom: 2px; }
+.footer-name { font-family: var(--font-display); font-size: 0.82rem; color: var(--white); margin-bottom: 2px; }
 .footer-sub { font-size: 0.78rem; color: var(--green-bright); margin-bottom: 4px; }
 .footer-escola { font-size: 0.75rem; color: var(--gray-mid); line-height: 1.4; margin-bottom: 12px; }
 .footer-social { display: flex; gap: 8px; }
@@ -732,7 +732,7 @@ a { text-decoration: none; color: inherit; }
 }
 .footer-links-col a:hover { color: var(--green-bright); }
 .footer-bottom {
-  padding: 16px 0; text-align: center;
+  padding: 10px 0; text-align: center;
 }
 .footer-tag {
   font-family: var(--font-display); font-style: italic;
