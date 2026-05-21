@@ -168,39 +168,594 @@
     </div>
   </section>
 
-  <!-- VÍDEO / PERSONAGENS -->
-  <section class="video-section" id="video">
-    <div class="hero-grid-bg" style="opacity:0.5"></div>
-    <div class="container" style="position:relative;z-index:2">
-      <div class="video-grid">
-        <div class="video-left reveal">
-          <div class="section-label light">Conheça os Personagens</div>
-          <h2 class="section-title reveal">CRISOMAN <span class="verde">+</span> CRISOGIRL</h2>
-          <blockquote class="video-quote reveal delay-1">
-            "Aprender é o primeiro passo. Agora imagine ganhar por fazer o certo?"
-          </blockquote>
-          <p class="video-desc reveal delay-2">
-            Nossos personagens guiam você por uma jornada de conscientização ambiental — divertida, interativa e recompensadora. Conheça também a Crisomoeda, nossa forma de reconhecer quem age pelo planeta.
-          </p>
-          <a href="https://crisomoeda.vercel.app/" target="_blank" class="btn btn-gold reveal delay-3">
-            🪙 Conheça a Crisomoeda
-          </a>
+  <!-- VÍDEO PREMIUM -->
+  <section class="cvd-media" id="video">
+    <!-- Ambient background particles -->
+    <canvas class="cvd-canvas" id="cvdCanvas"></canvas>
+    <div class="cvd-glow-left"></div>
+    <div class="cvd-glow-right"></div>
+
+    <div class="cvd-media-inner">
+      <!-- Section header -->
+      <div class="cvd-header reveal">
+        <div class="cvd-eyebrow">
+          <span class="cvd-dot"></span>
+          Universo Audiovisual
         </div>
-        <div class="video-right reveal delay-2">
-          <div class="video-embed">
-            <div class="video-placeholder">
-              <div class="video-icon">🎬</div>
-              <div class="play-btn" id="playBtn">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        <h2 class="cvd-title">Conheça o <span class="cvd-accent">Crisoverde</span><br>em movimento</h2>
+        <p class="cvd-subtitle">Vídeo institucional, gameplay, Crisomoeda e depoimentos — tudo em um só lugar.</p>
+      </div>
+
+      <!-- Video grid -->
+      <div class="cvd-grid reveal delay-1">
+
+        <!-- Main video -->
+        <div class="cvd-main" id="cvdMain">
+          <div class="cvd-main-thumb" data-videoid="" data-title="Vídeo Institucional" data-desc="Conheça o projeto Crisoverde Digital" data-duration="2:30">
+            <div class="cvd-main-overlay"></div>
+            <div class="cvd-main-bg">
+              <div class="cvd-main-icon">🌿</div>
+              <div class="cvd-main-particles">
+                <div class="cvd-p"></div><div class="cvd-p"></div><div class="cvd-p"></div>
+                <div class="cvd-p"></div><div class="cvd-p"></div>
               </div>
-              <p class="video-caption">Vídeo institucional em breve</p>
-              <span class="video-sub">CRISOMAN + CRISOGIRL apresentam o projeto</span>
             </div>
+            <div class="cvd-main-info">
+              <div class="cvd-main-badge">Em breve</div>
+              <h3 class="cvd-main-vtitle">Vídeo Institucional</h3>
+              <p class="cvd-main-vdesc">CRISOMAN + CRISOGIRL apresentam a missão do projeto e o impacto na comunidade de Crisópolis.</p>
+            </div>
+            <button class="cvd-play-btn" aria-label="Reproduzir vídeo">
+              <div class="cvd-play-ring"></div>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+            </button>
+            <div class="cvd-main-duration">2:30</div>
           </div>
         </div>
+
+        <!-- Side thumbnails -->
+        <div class="cvd-sidebar">
+
+          <div class="cvd-thumb" data-videoid="" data-title="Gameplay · Operação Reciclagem" data-desc="Veja o jogo de separação seletiva em ação" data-duration="1:45" data-icon="♻️" data-color="#3ECF8E">
+            <div class="cvd-thumb-visual">
+              <div class="cvd-thumb-bg" style="--th-color:#3ECF8E20">
+                <span class="cvd-thumb-emoji">♻️</span>
+              </div>
+              <button class="cvd-thumb-play" aria-label="Reproduzir">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+              </button>
+              <span class="cvd-thumb-dur">1:45</span>
+            </div>
+            <div class="cvd-thumb-info">
+              <span class="cvd-thumb-cat">🎮 Gameplay</span>
+              <p class="cvd-thumb-title">Operação Reciclagem</p>
+            </div>
+          </div>
+
+          <div class="cvd-thumb" data-videoid="" data-title="Crisomoeda — A Moeda do Bem" data-desc="Entenda como funciona a moeda da sustentabilidade" data-duration="3:10" data-icon="🪙" data-color="#F0C060">
+            <div class="cvd-thumb-visual">
+              <div class="cvd-thumb-bg" style="--th-color:#F0C06020">
+                <span class="cvd-thumb-emoji">🪙</span>
+              </div>
+              <button class="cvd-thumb-play" aria-label="Reproduzir">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+              </button>
+              <span class="cvd-thumb-dur">3:10</span>
+            </div>
+            <div class="cvd-thumb-info">
+              <span class="cvd-thumb-cat" style="color:#F0C060">🪙 Crisomoeda</span>
+              <p class="cvd-thumb-title">A Moeda do Bem</p>
+            </div>
+          </div>
+
+          <div class="cvd-thumb" data-videoid="" data-title="Depoimentos da Comunidade" data-desc="Alunos e professores falam sobre o impacto real" data-duration="4:00" data-icon="🎤" data-color="#60C0F0">
+            <div class="cvd-thumb-visual">
+              <div class="cvd-thumb-bg" style="--th-color:#60C0F020">
+                <span class="cvd-thumb-emoji">🎤</span>
+              </div>
+              <button class="cvd-thumb-play" aria-label="Reproduzir">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+              </button>
+              <span class="cvd-thumb-dur">4:00</span>
+            </div>
+            <div class="cvd-thumb-info">
+              <span class="cvd-thumb-cat" style="color:#60C0F0">🎤 Depoimentos</span>
+              <p class="cvd-thumb-title">Voz da Comunidade</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Social CTA -->
+      <div class="cvd-cta reveal delay-2">
+        <span class="cvd-cta-text">Acompanhe os lançamentos nas redes sociais</span>
+        <a href="https://www.instagram.com/crisoverde" target="_blank" rel="noopener" class="cvd-cta-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          @crisoverde
+        </a>
+        <a href="https://crisomoeda.vercel.app/" target="_blank" class="cvd-cta-btn cvd-cta-gold">
+          🪙 Crisomoeda
+        </a>
       </div>
     </div>
   </section>
+
+  <!-- MODAL PLAYER -->
+  <div class="cvd-modal" id="cvdModal" role="dialog" aria-modal="true" aria-label="Player de vídeo">
+    <div class="cvd-modal-backdrop" id="cvdModalBackdrop"></div>
+    <div class="cvd-modal-box">
+      <button class="cvd-modal-close" id="cvdModalClose" aria-label="Fechar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <div class="cvd-modal-player" id="cvdModalPlayer">
+        <div class="cvd-modal-placeholder">
+          <span style="font-size:3rem">🎬</span>
+          <p class="cvd-modal-coming">Vídeo institucional em breve!</p>
+          <p class="cvd-modal-sub">Acompanhe nosso Instagram para não perder o lançamento.</p>
+          <a href="https://www.instagram.com/crisoverde" target="_blank" rel="noopener" class="cvd-modal-ig">@crisoverde no Instagram</a>
+        </div>
+      </div>
+      <div class="cvd-modal-meta" id="cvdModalMeta">
+        <h4 id="cvdModalTitle">Vídeo Institucional</h4>
+        <p id="cvdModalDesc">CRISOMAN + CRISOGIRL apresentam o projeto</p>
+      </div>
+    </div>
+  </div>
+
+  <style>
+  /* ── CVD MEDIA SECTION ────────────────────────────────── */
+  .cvd-media {
+    position: relative;
+    padding: 7rem 0 6rem;
+    background: #020d08;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .cvd-canvas {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 0; opacity: .55;
+  }
+  .cvd-glow-left {
+    position: absolute; top: 20%; left: -10%;
+    width: 500px; height: 500px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(62,207,142,.12) 0%, transparent 70%);
+    pointer-events: none; z-index: 0;
+    animation: cvdGlowFloat 8s ease-in-out infinite alternate;
+  }
+  .cvd-glow-right {
+    position: absolute; bottom: 10%; right: -8%;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(240,192,96,.08) 0%, transparent 70%);
+    pointer-events: none; z-index: 0;
+    animation: cvdGlowFloat 10s ease-in-out infinite alternate-reverse;
+  }
+  @keyframes cvdGlowFloat {
+    from { transform: translateY(0) scale(1); }
+    to   { transform: translateY(-30px) scale(1.08); }
+  }
+
+  .cvd-media-inner {
+    position: relative; z-index: 2;
+    max-width: 1200px; margin: 0 auto; padding: 0 2rem;
+  }
+
+  /* Header */
+  .cvd-header { text-align: center; margin-bottom: 3.5rem; }
+  .cvd-eyebrow {
+    display: inline-flex; align-items: center; gap: .6rem;
+    font-family: 'Inter', sans-serif; font-size: .75rem; font-weight: 600;
+    letter-spacing: .18em; text-transform: uppercase;
+    color: #3ecf8e; margin-bottom: 1.2rem;
+  }
+  .cvd-dot {
+    width: 7px; height: 7px; border-radius: 50%; background: #3ecf8e;
+    box-shadow: 0 0 8px #3ecf8e; animation: cvdPulse 2s infinite;
+  }
+  @keyframes cvdPulse {
+    0%,100%{ box-shadow: 0 0 6px #3ecf8e; }
+    50%    { box-shadow: 0 0 16px #3ecf8e, 0 0 32px rgba(62,207,142,.4); }
+  }
+  .cvd-title {
+    font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 800; color: #f0f4f0; line-height: 1.15;
+    margin-bottom: .9rem; letter-spacing: -.02em;
+  }
+  .cvd-accent { color: #3ecf8e; }
+  .cvd-subtitle {
+    font-family: 'Inter', sans-serif; font-size: 1rem;
+    color: rgba(240,244,240,.55); max-width: 480px; margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* Grid layout */
+  .cvd-grid {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 1.2rem;
+    align-items: stretch;
+  }
+  @media (max-width: 860px) {
+    .cvd-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── MAIN VIDEO ── */
+  .cvd-main { position: relative; }
+  .cvd-main-thumb {
+    position: relative; border-radius: 18px; overflow: hidden;
+    aspect-ratio: 16/9; cursor: pointer;
+    background: #0a1a10;
+    border: 1px solid rgba(62,207,142,.15);
+    box-shadow: 0 0 0 0 rgba(62,207,142,0);
+    transition: box-shadow .4s, transform .4s;
+  }
+  .cvd-main-thumb:hover {
+    box-shadow: 0 0 40px rgba(62,207,142,.2), 0 20px 60px rgba(0,0,0,.5);
+    transform: translateY(-3px);
+  }
+  .cvd-main-bg {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, #0a1f14 0%, #051008 50%, #0d1a0d 100%);
+    overflow: hidden;
+  }
+  .cvd-main-icon {
+    font-size: 5rem; opacity: .2;
+    animation: cvdIconFloat 6s ease-in-out infinite;
+  }
+  @keyframes cvdIconFloat {
+    0%,100%{ transform: translateY(0) scale(1); }
+    50%    { transform: translateY(-12px) scale(1.04); }
+  }
+  .cvd-main-particles { position: absolute; inset: 0; }
+  .cvd-p {
+    position: absolute; width: 3px; height: 3px; border-radius: 50%;
+    background: #3ecf8e; opacity: 0;
+    animation: cvdParticle var(--d,6s) var(--delay,0s) ease-in-out infinite;
+  }
+  .cvd-p:nth-child(1){--d:7s;--delay:0s;  left:15%;top:25%}
+  .cvd-p:nth-child(2){--d:9s;--delay:1.5s;left:72%;top:60%}
+  .cvd-p:nth-child(3){--d:6s;--delay:3s;  left:40%;top:75%}
+  .cvd-p:nth-child(4){--d:8s;--delay:.8s; left:85%;top:20%}
+  .cvd-p:nth-child(5){--d:7s;--delay:2.2s;left:30%;top:50%}
+  @keyframes cvdParticle {
+    0%  { opacity:0; transform:translateY(0) scale(.5); }
+    30% { opacity:.8; }
+    100%{ opacity:0; transform:translateY(-60px) scale(1.2); }
+  }
+  .cvd-main-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,.1) 50%, transparent 100%);
+    z-index: 1;
+  }
+  .cvd-main-info {
+    position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;
+    padding: 2rem 1.8rem 1.6rem;
+  }
+  .cvd-main-badge {
+    display: inline-block;
+    background: rgba(62,207,142,.15); border: 1px solid rgba(62,207,142,.35);
+    color: #3ecf8e; font-family: 'Inter', sans-serif;
+    font-size: .68rem; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase; padding: .25rem .7rem; border-radius: 100px;
+    margin-bottom: .7rem; backdrop-filter: blur(8px);
+  }
+  .cvd-main-vtitle {
+    font-family: 'Playfair Display', serif; font-size: 1.45rem;
+    font-weight: 700; color: #fff; margin-bottom: .4rem; line-height: 1.2;
+  }
+  .cvd-main-vdesc {
+    font-family: 'Inter', sans-serif; font-size: .85rem;
+    color: rgba(255,255,255,.6); line-height: 1.5; max-width: 480px;
+  }
+  .cvd-play-btn {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 3; width: 72px; height: 72px;
+    background: rgba(62,207,142,.18);
+    border: 2px solid rgba(62,207,142,.5);
+    border-radius: 50%; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    backdrop-filter: blur(8px);
+    transition: background .3s, transform .3s, box-shadow .3s;
+  }
+  .cvd-play-btn:hover {
+    background: rgba(62,207,142,.35);
+    transform: translate(-50%,-50%) scale(1.1);
+    box-shadow: 0 0 30px rgba(62,207,142,.4);
+  }
+  .cvd-play-ring {
+    position: absolute; inset: -8px; border-radius: 50%;
+    border: 1px solid rgba(62,207,142,.25);
+    animation: cvdRing 2.5s linear infinite;
+  }
+  @keyframes cvdRing {
+    0%  { transform: scale(1);   opacity: .6; }
+    100%{ transform: scale(1.4); opacity: 0; }
+  }
+  .cvd-main-duration {
+    position: absolute; bottom: 1.4rem; right: 1.4rem; z-index: 3;
+    background: rgba(0,0,0,.65); border: 1px solid rgba(255,255,255,.1);
+    color: #fff; font-family: 'Inter', sans-serif;
+    font-size: .72rem; font-weight: 600; padding: .2rem .5rem;
+    border-radius: 5px; backdrop-filter: blur(6px);
+  }
+
+  /* ── SIDEBAR THUMBNAILS ── */
+  .cvd-sidebar {
+    display: flex; flex-direction: column; gap: 1.2rem;
+  }
+  @media (max-width: 860px) {
+    .cvd-sidebar { flex-direction: row; flex-wrap: nowrap; overflow-x: auto; gap: 1rem; padding-bottom: .5rem; }
+    .cvd-thumb { min-width: 220px; flex-shrink: 0; }
+  }
+
+  .cvd-thumb {
+    display: flex; flex-direction: column; gap: .6rem;
+    cursor: pointer; border-radius: 14px; overflow: hidden;
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(62,207,142,.1);
+    padding: .9rem;
+    transition: background .3s, border-color .3s, transform .3s, box-shadow .3s;
+    flex: 1;
+  }
+  .cvd-thumb:hover {
+    background: rgba(62,207,142,.06);
+    border-color: rgba(62,207,142,.3);
+    transform: translateX(3px);
+    box-shadow: -4px 0 20px rgba(62,207,142,.1), 0 8px 30px rgba(0,0,0,.3);
+  }
+  .cvd-thumb-visual {
+    position: relative; border-radius: 10px; overflow: hidden;
+    aspect-ratio: 16/9; background: rgba(255,255,255,.03);
+  }
+  .cvd-thumb-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, var(--th-color, rgba(62,207,142,.12)), rgba(0,0,0,.4));
+    display: flex; align-items: center; justify-content: center;
+  }
+  .cvd-thumb-emoji { font-size: 2rem; opacity: .7; }
+  .cvd-thumb-play {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    width: 32px; height: 32px; border-radius: 50%;
+    background: rgba(0,0,0,.5); border: 1.5px solid rgba(255,255,255,.4);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; backdrop-filter: blur(6px);
+    transition: background .25s, transform .25s;
+  }
+  .cvd-thumb:hover .cvd-thumb-play {
+    background: rgba(62,207,142,.4);
+    transform: translate(-50%,-50%) scale(1.1);
+  }
+  .cvd-thumb-dur {
+    position: absolute; bottom: .4rem; right: .5rem;
+    background: rgba(0,0,0,.7); color: #fff;
+    font-family: 'Inter', sans-serif; font-size: .65rem;
+    font-weight: 600; padding: .15rem .4rem; border-radius: 4px;
+  }
+  .cvd-thumb-info { padding: 0 .1rem; }
+  .cvd-thumb-cat {
+    display: block; font-family: 'Inter', sans-serif;
+    font-size: .68rem; font-weight: 700;
+    color: #3ecf8e; letter-spacing: .06em;
+    text-transform: uppercase; margin-bottom: .25rem;
+  }
+  .cvd-thumb-title {
+    font-family: 'Inter', sans-serif; font-size: .85rem;
+    font-weight: 600; color: rgba(240,244,240,.85);
+    line-height: 1.3;
+  }
+
+  /* ── CTA ROW ── */
+  .cvd-cta {
+    display: flex; align-items: center; justify-content: center;
+    gap: 1rem; margin-top: 2.8rem; flex-wrap: wrap;
+  }
+  .cvd-cta-text {
+    font-family: 'Inter', sans-serif; font-size: .85rem;
+    color: rgba(240,244,240,.45);
+  }
+  .cvd-cta-btn {
+    display: inline-flex; align-items: center; gap: .5rem;
+    background: rgba(62,207,142,.1); border: 1px solid rgba(62,207,142,.3);
+    color: #3ecf8e; font-family: 'Inter', sans-serif;
+    font-size: .82rem; font-weight: 600; padding: .55rem 1.2rem;
+    border-radius: 100px; text-decoration: none;
+    transition: background .3s, box-shadow .3s, transform .2s;
+  }
+  .cvd-cta-btn:hover {
+    background: rgba(62,207,142,.22);
+    box-shadow: 0 0 20px rgba(62,207,142,.25);
+    transform: translateY(-2px);
+  }
+  .cvd-cta-gold {
+    background: rgba(240,192,96,.1); border-color: rgba(240,192,96,.3);
+    color: #f0c060;
+  }
+  .cvd-cta-gold:hover {
+    background: rgba(240,192,96,.2);
+    box-shadow: 0 0 20px rgba(240,192,96,.2);
+  }
+
+  /* ── MODAL ── */
+  .cvd-modal {
+    position: fixed; inset: 0; z-index: 10000;
+    display: flex; align-items: center; justify-content: center;
+    pointer-events: none; opacity: 0;
+    transition: opacity .3s;
+  }
+  .cvd-modal.open { opacity: 1; pointer-events: all; }
+  .cvd-modal-backdrop {
+    position: absolute; inset: 0;
+    background: rgba(0,0,0,.85); backdrop-filter: blur(10px);
+    cursor: pointer;
+  }
+  .cvd-modal-box {
+    position: relative; z-index: 1;
+    width: min(860px, 94vw);
+    background: #0a1a10;
+    border: 1px solid rgba(62,207,142,.25);
+    border-radius: 20px;
+    box-shadow: 0 30px 100px rgba(0,0,0,.7), 0 0 60px rgba(62,207,142,.1);
+    overflow: hidden;
+    transform: scale(.95) translateY(16px);
+    transition: transform .35s cubic-bezier(.34,1.56,.64,1);
+  }
+  .cvd-modal.open .cvd-modal-box {
+    transform: scale(1) translateY(0);
+  }
+  .cvd-modal-close {
+    position: absolute; top: 1rem; right: 1rem; z-index: 2;
+    width: 36px; height: 36px; border-radius: 50%;
+    background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12);
+    color: #fff; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .2s;
+  }
+  .cvd-modal-close:hover { background: rgba(255,255,255,.18); }
+  .cvd-modal-player {
+    aspect-ratio: 16/9; background: #020d08;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .cvd-modal-player iframe { width: 100%; height: 100%; border: none; display: block; }
+  .cvd-modal-placeholder {
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; gap: .8rem; padding: 2rem;
+    text-align: center;
+  }
+  .cvd-modal-coming {
+    font-family: 'Playfair Display', serif; font-size: 1.3rem;
+    font-weight: 700; color: #3ecf8e;
+  }
+  .cvd-modal-sub {
+    font-family: 'Inter', sans-serif; font-size: .9rem;
+    color: rgba(240,244,240,.55); max-width: 300px; line-height: 1.5;
+  }
+  .cvd-modal-ig {
+    display: inline-flex; align-items: center;
+    background: rgba(62,207,142,.12); border: 1px solid rgba(62,207,142,.3);
+    color: #3ecf8e; font-family: 'Inter', sans-serif; font-size: .85rem;
+    font-weight: 600; padding: .5rem 1.2rem; border-radius: 100px;
+    text-decoration: none; margin-top: .5rem;
+    transition: background .3s;
+  }
+  .cvd-modal-ig:hover { background: rgba(62,207,142,.24); }
+  .cvd-modal-meta {
+    padding: 1.2rem 1.6rem 1.4rem;
+    border-top: 1px solid rgba(62,207,142,.1);
+  }
+  .cvd-modal-meta h4 {
+    font-family: 'Playfair Display', serif; font-size: 1.1rem;
+    color: #f0f4f0; margin-bottom: .3rem;
+  }
+  .cvd-modal-meta p {
+    font-family: 'Inter', sans-serif; font-size: .85rem;
+    color: rgba(240,244,240,.5);
+  }
+  </style>
+
+  <script>
+  (function() {
+    /* ── Particles canvas ── */
+    const canvas = document.getElementById('cvdCanvas');
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      let pts = [];
+      function resize() {
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+      }
+      function init() {
+        resize();
+        pts = Array.from({length: 55}, () => ({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          r: Math.random() * 1.5 + .3,
+          vx: (Math.random() - .5) * .3,
+          vy: (Math.random() - .5) * .25,
+          a: Math.random(),
+          va: (Math.random() - .5) * .008
+        }));
+      }
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        pts.forEach(p => {
+          p.x += p.vx; p.y += p.vy; p.a += p.va;
+          if (p.x < 0) p.x = canvas.width;
+          if (p.x > canvas.width) p.x = 0;
+          if (p.y < 0) p.y = canvas.height;
+          if (p.y > canvas.height) p.y = 0;
+          p.a = Math.max(0.05, Math.min(1, p.a));
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(62,207,142,${p.a * 0.5})`;
+          ctx.fill();
+        });
+        requestAnimationFrame(draw);
+      }
+      init();
+      draw();
+      window.addEventListener('resize', init);
+    }
+
+    /* ── Modal logic ── */
+    const modal = document.getElementById('cvdModal');
+    const modalBackdrop = document.getElementById('cvdModalBackdrop');
+    const modalClose = document.getElementById('cvdModalClose');
+    const modalPlayer = document.getElementById('cvdModalPlayer');
+    const modalTitle = document.getElementById('cvdModalTitle');
+    const modalDesc = document.getElementById('cvdModalDesc');
+
+    function openModal(videoId, title, desc) {
+      modalTitle.textContent = title || 'Vídeo';
+      modalDesc.textContent = desc || '';
+      if (videoId) {
+        modalPlayer.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+      } else {
+        modalPlayer.innerHTML = `<div class="cvd-modal-placeholder">
+          <span style="font-size:3rem">🎬</span>
+          <p class="cvd-modal-coming">Vídeo em breve!</p>
+          <p class="cvd-modal-sub">Acompanhe nosso Instagram para não perder o lançamento.</p>
+          <a href="https://www.instagram.com/crisoverde" target="_blank" rel="noopener" class="cvd-modal-ig">@crisoverde no Instagram</a>
+        </div>`;
+      }
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+      setTimeout(() => { modalPlayer.innerHTML = ''; }, 300);
+    }
+
+    modalBackdrop.addEventListener('click', closeModal);
+    modalClose.addEventListener('click', closeModal);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    /* Main video click */
+    document.querySelector('.cvd-main-thumb').addEventListener('click', function() {
+      openModal(
+        this.dataset.videoid,
+        this.dataset.title,
+        this.dataset.desc
+      );
+    });
+    document.querySelector('.cvd-play-btn').addEventListener('click', function(e) {
+      e.stopPropagation();
+      const t = this.closest('.cvd-main-thumb');
+      openModal(t.dataset.videoid, t.dataset.title, t.dataset.desc);
+    });
+
+    /* Thumbnail clicks */
+    document.querySelectorAll('.cvd-thumb').forEach(thumb => {
+      thumb.addEventListener('click', function() {
+        openModal(this.dataset.videoid, this.dataset.title, this.dataset.desc);
+      });
+    });
+  })();
+  </script>
 
   <!-- JOGOS -->
   <section class="jogos-section" id="jogos">
@@ -545,14 +1100,7 @@
       setTimeout(() => el.classList.add('visible'), 100);
     });
 
-    // Play button interaction
-    document.getElementById('playBtn').addEventListener('click', function() {
-      this.closest('.video-embed').innerHTML = `
-        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;background:rgba(62,207,142,0.08);border:1px solid rgba(62,207,142,0.2);border-radius:12px;">
-          <span style="font-size:3rem;">🎬</span>
-          <p style="color:var(--green-bright);font-family:'Playfair Display',serif;font-size:1.1rem;text-align:center;padding:0 2rem;">Vídeo institucional em breve!<br><span style="font-size:0.85rem;color:var(--gray-light);">Acompanhe nossas redes sociais.</span></p>
-        </div>`;
-    });
+    // Video section handled by inline script above
   </script>
 
 
