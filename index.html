@@ -4,6 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Crisoverde Digital — Educação para um Futuro Sustentável</title>
+
+  <!-- Segurança: Content-Security-Policy (reforça headers HTTP configurados em vercel.json) -->
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self';
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+    font-src 'self' https://fonts.gstatic.com;
+    img-src 'self' data:;
+    media-src 'self';
+    connect-src 'self';
+    frame-src https://crisoverde-bot-production.up.railway.app;
+    object-src 'none';
+    base-uri 'self';
+    form-action 'self';
+    upgrade-insecure-requests;
+  ">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <link rel="stylesheet" href="style/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -660,107 +678,7 @@
   }
   </style>
 
-  <script>
-  (function() {
-    /* ── Particles canvas ── */
-    const canvas = document.getElementById('cvdCanvas');
-    if (canvas) {
-      const ctx = canvas.getContext('2d');
-      let pts = [];
-      function resize() {
-        canvas.width = canvas.offsetWidth;
-        canvas.height = canvas.offsetHeight;
-      }
-      function init() {
-        resize();
-        pts = Array.from({length: 55}, () => ({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          r: Math.random() * 1.5 + .3,
-          vx: (Math.random() - .5) * .3,
-          vy: (Math.random() - .5) * .25,
-          a: Math.random(),
-          va: (Math.random() - .5) * .008
-        }));
-      }
-      function draw() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        pts.forEach(p => {
-          p.x += p.vx; p.y += p.vy; p.a += p.va;
-          if (p.x < 0) p.x = canvas.width;
-          if (p.x > canvas.width) p.x = 0;
-          if (p.y < 0) p.y = canvas.height;
-          if (p.y > canvas.height) p.y = 0;
-          p.a = Math.max(0.05, Math.min(1, p.a));
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(62,207,142,${p.a * 0.5})`;
-          ctx.fill();
-        });
-        requestAnimationFrame(draw);
-      }
-      init();
-      draw();
-      window.addEventListener('resize', init);
-    }
-
-    /* ── Modal logic ── */
-    const modal = document.getElementById('cvdModal');
-    const modalBackdrop = document.getElementById('cvdModalBackdrop');
-    const modalClose = document.getElementById('cvdModalClose');
-    const modalPlayer = document.getElementById('cvdModalPlayer');
-    const modalTitle = document.getElementById('cvdModalTitle');
-    const modalDesc = document.getElementById('cvdModalDesc');
-
-    function openModal(videoId, title, desc) {
-      modalTitle.textContent = title || 'Vídeo';
-      modalDesc.textContent = desc || '';
-      if (videoId) {
-        modalPlayer.innerHTML = `<video controls autoplay style="width:100%;height:100%;border-radius:8px;background:#000"><source src="${videoId}" type="video/mp4"></video>`;
-      } else {
-        modalPlayer.innerHTML = `<div class="cvd-modal-placeholder">
-          <span style="font-size:3rem">🎬</span>
-          <p class="cvd-modal-coming">Vídeo em breve!</p>
-          <p class="cvd-modal-sub">Acompanhe nosso Instagram para não perder o lançamento.</p>
-          <a href="https://www.instagram.com/crisoverde" target="_blank" rel="noopener" class="cvd-modal-ig">@crisoverde no Instagram</a>
-        </div>`;
-      }
-      modal.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeModal() {
-      modal.classList.remove('open');
-      document.body.style.overflow = '';
-      setTimeout(() => { modalPlayer.innerHTML = ''; }, 300);
-    }
-
-    modalBackdrop.addEventListener('click', closeModal);
-    modalClose.addEventListener('click', closeModal);
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-
-    /* Main video click */
-    document.querySelector('.cvd-main-thumb').addEventListener('click', function() {
-      openModal(
-        this.dataset.videoid,
-        this.dataset.title,
-        this.dataset.desc
-      );
-    });
-    document.querySelector('.cvd-play-btn').addEventListener('click', function(e) {
-      e.stopPropagation();
-      const t = this.closest('.cvd-main-thumb');
-      openModal(t.dataset.videoid, t.dataset.title, t.dataset.desc);
-    });
-
-    /* Thumbnail clicks */
-    document.querySelectorAll('.cvd-thumb').forEach(thumb => {
-      thumb.addEventListener('click', function() {
-        openModal(this.dataset.videoid, this.dataset.title, this.dataset.desc);
-      });
-    });
-  })();
-  </script>
+  <!-- Script movido para js/main.js (CSP: script-src 'self', sem 'unsafe-inline') -->
 
   <!-- JOGOS -->
   <section class="jogos-section" id="jogos">
@@ -1014,6 +932,8 @@
             title="Crisoverde Bot"
             style="width:100%;height:100%;border:none"
             loading="lazy"
+            sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+            referrerpolicy="no-referrer"
           ></iframe>
         </div>
       </div>
@@ -1070,64 +990,14 @@
       src="https://crisoverde-bot-production.up.railway.app"
       title="Crisoverde Bot"
       loading="lazy"
+      sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+      referrerpolicy="no-referrer"
     ></iframe>
   </div>
 
-  <script>
-    const cvBtn = document.getElementById('cvWidgetBtn');
-    const cvPanel = document.getElementById('cvWidgetPanel');
-    cvBtn.addEventListener('click', () => cvPanel.classList.toggle('open'));
-    document.addEventListener('click', (e) => {
-      if (!cvPanel.contains(e.target) && !cvBtn.contains(e.target)) {
-        cvPanel.classList.remove('open');
-      }
-    });
-  </script>
   <!-- FIM WIDGET -->
 
-  <script>
-    // Loader
-    window.addEventListener('load', () => {
-      const loader = document.getElementById('loader');
-      setTimeout(() => loader.classList.add('hidden'), 900);
-    });
-
-    // Navbar scroll
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 60);
-    });
-
-    // Mobile menu
-    const menuBtn = document.getElementById('menuBtn');
-    const navMobile = document.getElementById('navMobile');
-    menuBtn.addEventListener('click', () => {
-      menuBtn.classList.toggle('open');
-      navMobile.classList.toggle('open');
-    });
-    document.querySelectorAll('.mob-link').forEach(l => {
-      l.addEventListener('click', () => {
-        menuBtn.classList.remove('open');
-        navMobile.classList.remove('open');
-      });
-    });
-
-    // Reveal on scroll
-    const reveals = document.querySelectorAll('.reveal, .reveal-hero');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) e.target.classList.add('visible');
-      });
-    }, { threshold: 0.1 });
-    reveals.forEach(r => observer.observe(r));
-
-    // Hero reveals immediately
-    document.querySelectorAll('.reveal-hero').forEach(el => {
-      setTimeout(() => el.classList.add('visible'), 100);
-    });
-
-    // Video section handled by inline script above
-  </script>
+  <script src="js/main.js" defer></script>
 
 
   <!-- FOOTER -->
