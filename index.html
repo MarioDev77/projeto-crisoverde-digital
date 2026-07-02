@@ -14,7 +14,7 @@
     img-src 'self' data:;
     media-src 'self';
     connect-src 'self';
-    frame-src https://crisoverde-bot-production.up.railway.app;
+    frame-src 'none';
     object-src 'none';
     base-uri 'self';
     form-action 'self';
@@ -881,7 +881,7 @@
 
 
 
-  <!-- SEÇÃO CHATBOT -->
+  <!-- SEÇÃO CHATBOT / CRISO.IA -->
   <section style="background:#0a1f14;padding:60px 0;border-top:1px solid rgba(62,207,142,0.12)" id="chatbot">
     <div class="container">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start">
@@ -891,11 +891,15 @@
             Assistente Virtual
           </div>
           <h2 style="font-family:'Playfair Display',Georgia,serif;font-size:clamp(1.8rem,3.5vw,2.6rem);color:#fff;margin-bottom:14px;line-height:1.2">
-            Converse com o<br><span style="color:#3ecf8e">Crisoverde Bot</span>
+            Conheça a<br><span style="color:#3ecf8e">CRISO.IA</span>
           </h2>
-          <p style="color:#c4c9d4;font-size:.95rem;line-height:1.7;margin-bottom:28px">
-            Tire dúvidas sobre reciclagem, Crisomoeda, CrisoApp e sustentabilidade — disponível 24h, direto aqui no site.
+          <p style="color:#c4c9d4;font-size:.95rem;line-height:1.7;margin-bottom:20px">
+            Nossa assistente de inteligência artificial agora vive em um app próprio, com login, histórico de conversas e uma experiência muito mais completa. Tire dúvidas sobre reciclagem, Crisomoeda, CrisoApp e sustentabilidade — disponível 24h.
           </p>
+          <div style="display:flex;align-items:flex-start;gap:10px;padding:12px 16px;background:rgba(240,192,96,.08);border:1px solid rgba(240,192,96,.3);border-radius:12px;margin-bottom:28px">
+            <span style="font-size:16px">🧪</span>
+            <span style="font-size:12.5px;color:#F0D9A0;line-height:1.6"><strong>Protótipo em evolução:</strong> a CRISO.IA está em fase de testes e melhorias contínuas. Sua experiência ajuda a gente a evoluir a assistente — encontrou algo estranho? Isso é esperado num protótipo, e todo feedback é bem-vindo.</span>
+          </div>
           <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px">
             <span style="font-size:12px;padding:6px 14px;border:1px solid rgba(62,207,142,.3);border-radius:20px;color:#9FE1CB;background:rgba(62,207,142,.08)">♻ Reciclagem</span>
             <span style="font-size:12px;padding:6px 14px;border:1px solid rgba(62,207,142,.3);border-radius:20px;color:#9FE1CB;background:rgba(62,207,142,.08)">🪙 Crisomoeda</span>
@@ -926,15 +930,40 @@
             </div>
           </div>
         </div>
-        <div style="border-radius:16px;overflow:hidden;border:1px solid rgba(62,207,142,.2);box-shadow:0 8px 40px rgba(0,0,0,.4);height:580px">
-          <iframe
-            src="https://crisoverde-bot-production.up.railway.app"
-            title="Crisoverde Bot"
-            style="width:100%;height:100%;border:none"
-            loading="lazy"
-            sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
-            referrerpolicy="no-referrer"
-          ></iframe>
+
+        <!-- CARD DE ACESSO À CRISO.IA -->
+        <div style="position:relative;border-radius:20px;overflow:hidden;border:1px solid rgba(62,207,142,.25);box-shadow:0 8px 40px rgba(0,0,0,.4);background:linear-gradient(160deg,#0f2b1d 0%,#0a1f14 60%,#081a11 100%);padding:40px 32px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:20px">
+          <div style="position:absolute;top:18px;right:18px;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#F0D9A0;background:rgba(240,192,96,.12);border:1px solid rgba(240,192,96,.35);padding:5px 12px;border-radius:20px">
+            🧪 Protótipo
+          </div>
+
+          <div style="width:84px;height:84px;border-radius:50%;background:rgba(62,207,142,.12);border:1px solid rgba(62,207,142,.3);display:flex;align-items:center;justify-content:center;overflow:hidden;margin-top:12px">
+            <img src="img/criso-ia-logo.png" alt="CRISO.IA" style="width:100%;height:100%;object-fit:cover">
+          </div>
+
+          <h3 style="font-family:'Playfair Display',Georgia,serif;color:#fff;font-size:1.5rem;margin:0">CRISO.IA</h3>
+          <p style="color:#9FE1CB;font-size:12.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin:-8px 0 0">Sua assistente de sustentabilidade</p>
+
+          <p style="color:#c4c9d4;font-size:.9rem;line-height:1.7;max-width:340px">
+            Crie sua conta gratuita em segundos e comece agora a testar a CRISO.IA — converse, tire dúvidas e explore o ecossistema Crisoverde em um app dedicado.
+          </p>
+
+          <a href="https://crisoverde-bot.vercel.app/" target="_blank" rel="noopener"
+             style="display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;max-width:320px;padding:15px 24px;background:#3ecf8e;color:#06210f;font-weight:700;font-size:.95rem;border-radius:12px;text-decoration:none;box-shadow:0 6px 24px rgba(62,207,142,.35);transition:transform .2s, box-shadow .2s"
+             onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+            🚀 Acessar a CRISO.IA
+          </a>
+
+          <a href="https://crisoverde-bot.vercel.app/" target="_blank" rel="noopener"
+             style="font-size:12.5px;color:#9FE1CB;text-decoration:underline;text-underline-offset:3px">
+            Ainda não tem conta? Crie grátis e teste agora →
+          </a>
+
+          <div style="width:100%;height:1px;background:rgba(255,255,255,.08);margin:6px 0"></div>
+
+          <p style="font-size:11.5px;color:#6b7280;line-height:1.6;max-width:340px">
+            A CRISO.IA é um protótipo em desenvolvimento contínuo pela equipe do Crisoverde Digital. Algumas funcionalidades ainda estão sendo aprimoradas — obrigado por testar e ajudar a melhorar!
+          </p>
         </div>
       </div>
     </div>
@@ -950,6 +979,7 @@
       display: flex; align-items: center; justify-content: center;
       box-shadow: 0 4px 24px rgba(8,80,65,.45); z-index: 9999;
       transition: transform .2s, box-shadow .2s;
+      text-decoration: none;
     }
     .cv-widget-btn:hover { transform: scale(1.08); box-shadow: 0 6px 32px rgba(8,80,65,.6); }
     .cv-widget-btn img { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; }
@@ -980,20 +1010,10 @@
     }
   </style>
 
-  <button class="cv-widget-btn" id="cvWidgetBtn" aria-label="Abrir chat Crisoverde">
-    <img src="img/logo-insta.png" alt="Crisoverde Bot" />
+  <a class="cv-widget-btn" id="cvWidgetBtn" href="https://crisoverde-bot.vercel.app/" target="_blank" rel="noopener" aria-label="Acessar a CRISO.IA" title="Acessar a CRISO.IA">
+    <img src="img/criso-ia-logo.png" alt="CRISO.IA" />
     <div class="cv-widget-badge"></div>
-  </button>
-
-  <div class="cv-widget-panel" id="cvWidgetPanel">
-    <iframe
-      src="https://crisoverde-bot-production.up.railway.app"
-      title="Crisoverde Bot"
-      loading="lazy"
-      sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
-      referrerpolicy="no-referrer"
-    ></iframe>
-  </div>
+  </a>
 
   <!-- FIM WIDGET -->
 

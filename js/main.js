@@ -136,17 +136,7 @@
     });
   });
 
-  /* ── Floating chat widget ── */
-  const cvBtn = document.getElementById('cvWidgetBtn');
-  const cvPanel = document.getElementById('cvWidgetPanel');
-  if (cvBtn && cvPanel) {
-    cvBtn.addEventListener('click', () => cvPanel.classList.toggle('open'));
-    document.addEventListener('click', (e) => {
-      if (!cvPanel.contains(e.target) && !cvBtn.contains(e.target)) {
-        cvPanel.classList.remove('open');
-      }
-    });
-  }
+  /* ── Botão flutuante: agora é um link direto para a CRISO.IA (ver href no HTML) ── */
 
   /* ── Loader ── */
   window.addEventListener('load', () => {
