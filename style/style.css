@@ -227,6 +227,26 @@ button:focus-visible,
   0%, 100% { opacity: 0.7; }
   50% { opacity: 1; }
 }
+@keyframes brandFloat {
+  0%   { transform: translateY(0) rotate(0deg); }
+  50%  { transform: translateY(-16px) rotate(4deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+/* Logos do brasão flutuando soltas e espaçadas — identidade de marca, não um padrão apertado */
+.brand-floaters {
+  position: absolute; inset: 0;
+  overflow: hidden; pointer-events: none;
+  z-index: 0;
+}
+.brand-floaters img {
+  position: absolute;
+  animation: brandFloat 9s ease-in-out infinite;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .brand-floaters img { animation: none; }
+}
 
 /* Scroll reveal */
 .reveal {
@@ -252,13 +272,6 @@ button:focus-visible,
   min-height: 100vh;
   background: var(--green-deep);
   position: relative; overflow: hidden;
-}
-.hero::before {
-  content: ''; position: absolute; inset: 0;
-  background-image: var(--brand-logo-pattern);
-  background-repeat: repeat; background-size: 84px 84px;
-  background-position: 0 0;
-  opacity: 0.07; pointer-events: none;
 }
 .hero-centered {
   display: flex !important;
@@ -560,12 +573,6 @@ section:not(.hero) .btn-primary:hover { background: #135939; }
   overflow: hidden;
   isolation: isolate;
 }
-.cvd-media::before {
-  content: ''; position: absolute; inset: 0; z-index: 0;
-  background-image: var(--brand-logo-pattern);
-  background-repeat: repeat; background-size: 84px 84px;
-  opacity: 0.06; pointer-events: none;
-}
 .cvd-canvas { display: none; } /* partículas removidas visualmente */
 .cvd-glow-left, .cvd-glow-right { display: none; } /* halos removidos */
 
@@ -819,12 +826,6 @@ section:not(.hero) .btn-primary:hover { background: #135939; }
   background: var(--green-deep); padding: 108px 0;
   position: relative; overflow: hidden;
 }
-.ods-section::before {
-  content: ''; position: absolute; inset: 0;
-  background-image: var(--brand-logo-pattern);
-  background-repeat: repeat; background-size: 84px 84px;
-  opacity: 0.06; pointer-events: none;
-}
 .ods-section > .container { position: relative; z-index: 1; }
 .ods-top { margin-bottom: 52px; }
 .ods-intro-grid {
@@ -928,12 +929,6 @@ section:not(.hero) .btn-primary:hover { background: #135939; }
   background: var(--green-mid); padding: 84px 0;
   position: relative; overflow: hidden; text-align: center;
 }
-.cta-crisomoeda::before {
-  content: ''; position: absolute; inset: 0;
-  background-image: var(--brand-logo-pattern);
-  background-repeat: repeat; background-size: 84px 84px;
-  opacity: 0.12; pointer-events: none; filter: brightness(0) invert(1);
-}
 .cta-crisomoeda .hero-grid-bg,
 .cta-crisomoeda .hero-orbs { display: none; }
 .cta-content { position: relative; z-index: 1; }
@@ -955,12 +950,6 @@ section:not(.hero) .btn-primary:hover { background: #135939; }
   border-top: 1px solid rgba(255,255,255,0.08);
   padding: 18px 0 0;
   position: relative; overflow: hidden;
-}
-.footer::before {
-  content: ''; position: absolute; inset: 0;
-  background-image: var(--brand-logo-pattern);
-  background-repeat: repeat; background-size: 84px 84px;
-  opacity: 0.05; pointer-events: none;
 }
 .footer-inner, .footer-bottom { position: relative; z-index: 1; }
 .footer-inner {
