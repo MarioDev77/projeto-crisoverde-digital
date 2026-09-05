@@ -23,6 +23,8 @@
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <link rel="stylesheet" href="style/style.css">
+  <link rel="stylesheet" href="style/intro.css">
+  <script src="js/intro.js" defer></script>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Favicon -->
@@ -43,6 +45,26 @@
   <meta property="og:type" content="website">
 </head>
 <body>
+
+  <!-- INTRODUÇÃO ANIMADA (camada independente — ver style/intro.css e js/intro.js) -->
+  <div class="crv-intro" id="crisoIntro" role="dialog" aria-modal="true" aria-label="Introdução do Crisoverde Digital">
+    <div class="crv-intro-bg" aria-hidden="true">
+      <span class="crv-intro-leaf crv-leaf-1">🍃</span>
+      <span class="crv-intro-leaf crv-leaf-2">♻️</span>
+      <span class="crv-intro-leaf crv-leaf-3">🍃</span>
+      <span class="crv-intro-leaf crv-leaf-4">🌱</span>
+    </div>
+    <div class="crv-intro-stage">
+      <img src="img/crisoman-intro.png" alt="Crisoman, mascote do Crisoverde Digital, acenando" class="crv-intro-char">
+      <div class="crv-intro-bubble" aria-live="polite">
+        <span class="crv-intro-label">Crisoman</span>
+        <p class="crv-intro-line active">Você já conhece o<br>Crisoverde Digital?</p>
+        <p class="crv-intro-line">E sabe como descartar<br>seu lixo corretamente?</p>
+        <p class="crv-intro-line crv-intro-cta">Conheça o Crisoverde Digital! 🌱</p>
+      </div>
+    </div>
+    <button type="button" class="crv-intro-skip" id="crisoIntroSkip">Pular introdução →</button>
+  </div>
 
   <!-- LOADER -->
   <div class="loader" id="loader">
