@@ -59,6 +59,20 @@ a { text-decoration: none; color: inherit; }
   }
 }
 
+/* Foco de teclado — visível e consistente com a paleta */
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible,
+.jogo-card:focus-visible,
+.nav-menu-btn:focus-visible {
+  outline: 2px solid var(--green-mid);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+.hero :is(a, button):focus-visible {
+  outline-color: var(--green-accent);
+}
+
 /* CONTAINER */
 .container { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
 
@@ -424,7 +438,7 @@ section:not(.hero) .btn-primary:hover { background: #135939; }
    PROPÓSITO
 =========================== */
 .proposito {
-  background: var(--cream); padding: 100px 0;
+  background: var(--cream); padding: 116px 0;
 }
 .proposito .section-label { color: var(--green-mid); }
 .proposito-grid {
@@ -447,8 +461,8 @@ section:not(.hero) .btn-primary:hover { background: #135939; }
 .paradoxo-card {
   background: var(--green-deep);
   border: 1px solid rgba(255,255,255,0.08);
-  border-radius: var(--radius-lg); padding: 36px;
-  box-shadow: var(--shadow);
+  border-radius: var(--radius-lg); padding: 40px 36px;
+  box-shadow: var(--shadow-soft);
 }
 .paradoxo-label {
   font-family: var(--font-body);
@@ -707,7 +721,7 @@ section:not(.hero) .btn-primary:hover { background: #135939; }
    JOGOS — cards editoriais com imagem real
 =========================== */
 .jogos-section {
-  background: var(--cream); padding: 100px 0;
+  background: var(--cream); padding: 96px 0;
 }
 .jogos-section .section-title,
 .jogos-section .section-label:not(.light) { color: var(--ink); }
@@ -777,7 +791,7 @@ section:not(.hero) .btn-primary:hover { background: #135939; }
    ODS SECTION
 =========================== */
 .ods-section {
-  background: var(--green-deep); padding: 100px 0;
+  background: var(--green-deep); padding: 108px 0;
 }
 .ods-top { margin-bottom: 52px; }
 .ods-intro-grid {
@@ -838,7 +852,7 @@ section:not(.hero) .btn-primary:hover { background: #135939; }
    DEPOIMENTOS
 =========================== */
 .depoimentos-section {
-  background: var(--cream); padding: 100px 0;
+  background: var(--cream); padding: 92px 0;
 }
 .depoimentos-section .section-label { color: var(--green-mid); }
 .depo-grid {
@@ -878,7 +892,7 @@ section:not(.hero) .btn-primary:hover { background: #135939; }
    CTA CRISOMOEDA
 =========================== */
 .cta-crisomoeda {
-  background: var(--green-mid); padding: 100px 0;
+  background: var(--green-mid); padding: 84px 0;
   position: relative; overflow: hidden; text-align: center;
 }
 .cta-crisomoeda .hero-grid-bg,
