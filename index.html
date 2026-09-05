@@ -23,8 +23,6 @@
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <link rel="stylesheet" href="style/style.css">
-  <link rel="stylesheet" href="style/intro.css?v=5">
-  <script src="js/intro.js?v=5" defer></script>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Favicon -->
@@ -45,45 +43,6 @@
   <meta property="og:type" content="website">
 </head>
 <body>
-
-  <!-- INTRODUÇÃO ANIMADA (camada independente — ver style/intro.css e js/intro.js) -->
-  <div class="crv-intro" id="crisoIntro" role="dialog" aria-modal="true" aria-label="Introdução do Crisoverde Digital">
-    <div class="crv-intro-bg" aria-hidden="true">
-      <div class="crv-intro-halo"></div>
-      <span class="crv-intro-leaf crv-leaf-1">🍃</span>
-      <span class="crv-intro-leaf crv-leaf-2">♻️</span>
-      <span class="crv-intro-leaf crv-leaf-3">🍃</span>
-      <span class="crv-intro-leaf crv-leaf-4">🌱</span>
-      <span class="crv-intro-leaf crv-leaf-5">♻️</span>
-      <span class="crv-intro-spark crv-spark-1"></span>
-      <span class="crv-intro-spark crv-spark-2"></span>
-      <span class="crv-intro-spark crv-spark-3"></span>
-    </div>
-
-    <div class="crv-intro-stage">
-      <div class="crv-intro-visual">
-        <picture>
-          <source srcset="img/crisoman-intro-scene.webp" type="image/webp">
-          <img src="img/crisoman-intro-scene.png" alt="Crisoman, mascote do Crisoverde Digital, acenando ao lado da janela do laboratório verde" class="crv-intro-scene-img" width="785" height="941">
-        </picture>
-      </div>
-
-      <div class="crv-intro-dialogue">
-        <div class="crv-intro-wordmark" aria-hidden="true">
-          <span class="crv-wm-top">CRISOVERDE<span class="crv-wm-leaf">🍃</span></span>
-          <span class="crv-wm-sub"><span>DIGITAL</span></span>
-        </div>
-
-        <div class="crv-intro-bubble" aria-live="polite">
-          <span class="crv-intro-badge" aria-hidden="true">🌱</span>
-          <p class="crv-intro-line" id="crvIntroLine"><span class="crv-typed" id="crvIntroTyped"></span><span class="crv-caret" id="crvIntroCaret"></span></p>
-        </div>
-        <button type="button" class="crv-intro-cta" id="crisoIntroCta">Começar minha jornada <span aria-hidden="true">→</span></button>
-      </div>
-    </div>
-
-    <button type="button" class="crv-intro-skip" id="crisoIntroSkip">Pular introdução</button>
-  </div>
 
   <!-- LOADER -->
   <div class="loader" id="loader">
