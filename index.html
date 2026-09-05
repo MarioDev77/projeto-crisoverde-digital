@@ -49,21 +49,33 @@
   <!-- INTRODUÇÃO ANIMADA (camada independente — ver style/intro.css e js/intro.js) -->
   <div class="crv-intro" id="crisoIntro" role="dialog" aria-modal="true" aria-label="Introdução do Crisoverde Digital">
     <div class="crv-intro-bg" aria-hidden="true">
+      <div class="crv-intro-halo"></div>
       <span class="crv-intro-leaf crv-leaf-1">🍃</span>
       <span class="crv-intro-leaf crv-leaf-2">♻️</span>
       <span class="crv-intro-leaf crv-leaf-3">🍃</span>
       <span class="crv-intro-leaf crv-leaf-4">🌱</span>
+      <span class="crv-intro-leaf crv-leaf-5">♻️</span>
+      <span class="crv-intro-spark crv-spark-1"></span>
+      <span class="crv-intro-spark crv-spark-2"></span>
+      <span class="crv-intro-spark crv-spark-3"></span>
     </div>
+
     <div class="crv-intro-stage">
-      <img src="img/crisoman-intro.png" alt="Crisoman, mascote do Crisoverde Digital, acenando" class="crv-intro-char">
-      <div class="crv-intro-bubble" aria-live="polite">
-        <span class="crv-intro-label">Crisoman</span>
-        <p class="crv-intro-line active">Você já conhece o<br>Crisoverde Digital?</p>
-        <p class="crv-intro-line">E sabe como descartar<br>seu lixo corretamente?</p>
-        <p class="crv-intro-line crv-intro-cta">Conheça o Crisoverde Digital! 🌱</p>
+      <div class="crv-intro-char-wrap">
+        <img src="img/crisoman-intro.png" alt="Crisoman, mascote do Crisoverde Digital" class="crv-intro-char">
+        <div class="crv-intro-ground" aria-hidden="true"></div>
+      </div>
+
+      <div class="crv-intro-dialogue">
+        <div class="crv-intro-bubble" aria-live="polite">
+          <span class="crv-intro-label">Crisoman</span>
+          <p class="crv-intro-line" id="crvIntroLine"><span class="crv-typed" id="crvIntroTyped"></span><span class="crv-caret" id="crvIntroCaret"></span></p>
+        </div>
+        <button type="button" class="crv-intro-cta" id="crisoIntroCta">Começar minha jornada <span aria-hidden="true">→</span></button>
       </div>
     </div>
-    <button type="button" class="crv-intro-skip" id="crisoIntroSkip">Pular introdução →</button>
+
+    <button type="button" class="crv-intro-skip" id="crisoIntroSkip">Pular introdução</button>
   </div>
 
   <!-- LOADER -->
