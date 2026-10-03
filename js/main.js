@@ -1,46 +1,4 @@
 (function () {
-  /* ── Particles canvas ── */
-  const canvas = document.getElementById('cvdCanvas');
-  if (canvas) {
-    const ctx = canvas.getContext('2d');
-    let pts = [];
-    function resize() {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-    }
-    function init() {
-      resize();
-      pts = Array.from({ length: 55 }, () => ({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        r: Math.random() * 1.5 + .3,
-        vx: (Math.random() - .5) * .3,
-        vy: (Math.random() - .5) * .25,
-        a: Math.random(),
-        va: (Math.random() - .5) * .008
-      }));
-    }
-    function draw() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      pts.forEach(p => {
-        p.x += p.vx; p.y += p.vy; p.a += p.va;
-        if (p.x < 0) p.x = canvas.width;
-        if (p.x > canvas.width) p.x = 0;
-        if (p.y < 0) p.y = canvas.height;
-        if (p.y > canvas.height) p.y = 0;
-        p.a = Math.max(0.05, Math.min(1, p.a));
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(62,207,142,${p.a * 0.5})`;
-        ctx.fill();
-      });
-      requestAnimationFrame(draw);
-    }
-    init();
-    draw();
-    window.addEventListener('resize', init);
-  }
-
   /* ── Modal logic ── */
   const modal = document.getElementById('cvdModal');
   const modalBackdrop = document.getElementById('cvdModalBackdrop');
@@ -63,7 +21,9 @@
     while (modalPlayer.firstChild) modalPlayer.removeChild(modalPlayer.firstChild);
   }
 
+  let lastFocus = null;
   function openModal(videoId, title, desc) {
+    lastFocus = document.activeElement;
     modalTitle.textContent = title || 'Vídeo';
     modalDesc.textContent = desc || '';
     clearModalPlayer();
@@ -72,6 +32,8 @@
       const video = document.createElement('video');
       video.controls = true;
       video.autoplay = true;
+      video.playsInline = true;
+      video.preload = 'metadata';
       video.style.cssText = 'width:100%;height:100%;border-radius:8px;background:#000';
       const source = document.createElement('source');
       source.src = videoId;
@@ -84,7 +46,7 @@
 
       const icon = document.createElement('span');
       icon.style.fontSize = '3rem';
-      icon.textContent = '🎬';
+      icon.textContent = '▶';
 
       const comingSoon = document.createElement('p');
       comingSoon.className = 'cvd-modal-coming';
@@ -107,17 +69,31 @@
 
     modal.classList.add('open');
     document.body.style.overflow = 'hidden';
+    modalClose.focus();
   }
 
   function closeModal() {
+    if (!modal.classList.contains('open')) return;
+    const v = modalPlayer.querySelector('video'); if (v) v.pause();
     modal.classList.remove('open');
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
     document.body.style.overflow = '';
     setTimeout(clearModalPlayer, 300);
   }
 
   modalBackdrop.addEventListener('click', closeModal);
   modalClose.addEventListener('click', closeModal);
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+  document.addEventListener('keydown', e => {
+    if (!modal.classList.contains('open')) return;
+    if (e.key === 'Escape') { closeModal(); return; }
+    if (e.key === 'Tab') {   // mantém o foco dentro do modal
+      const f = [...modal.querySelectorAll('button, a[href], video[controls]')].filter(el => el.offsetParent !== null);
+      if (!f.length) return;
+      const first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
 
   /* Main video click */
   document.querySelector('.cvd-main-thumb').addEventListener('click', function () {
@@ -131,6 +107,9 @@
 
   /* Thumbnail clicks */
   document.querySelectorAll('.cvd-thumb').forEach(thumb => {
+    thumb.setAttribute('role', 'button'); thumb.tabIndex = 0;
+    thumb.setAttribute('aria-label', 'Reproduzir: ' + (thumb.dataset.title || 'vídeo'));
+    thumb.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); thumb.click(); } });
     thumb.addEventListener('click', function () {
       openModal(this.dataset.videoid, this.dataset.title, this.dataset.desc);
     });
@@ -146,16 +125,19 @@
 
   /* ── Navbar scroll ── */
   const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 60);
-  });
+  let navTick = false;
+  const navUpdate = () => { navTick = false; navbar.classList.toggle('scrolled', window.scrollY > 60); };
+  window.addEventListener('scroll', () => { if (!navTick) { navTick = true; requestAnimationFrame(navUpdate); } }, { passive: true });
+  navUpdate();
 
   /* ── Mobile menu ── */
   const menuBtn = document.getElementById('menuBtn');
   const navMobile = document.getElementById('navMobile');
+  menuBtn.setAttribute('aria-expanded', 'false');
+  menuBtn.setAttribute('aria-controls', 'navMobile');
   menuBtn.addEventListener('click', () => {
     menuBtn.classList.toggle('open');
-    navMobile.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', String(navMobile.classList.toggle('open')));
   });
   document.querySelectorAll('.mob-link').forEach(l => {
     l.addEventListener('click', () => {

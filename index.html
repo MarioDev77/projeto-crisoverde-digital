@@ -41,13 +41,14 @@
   <meta property="og:title" content="Crisoverde Digital — Educação para um Futuro Sustentável">
   <meta property="og:description" content="Transformando consciência ambiental em comportamento real através de jogos e experiências digitais.">
   <meta property="og:type" content="website">
+  <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 </head>
 <body>
 
   <!-- LOADER -->
   <div class="loader" id="loader">
     <div class="loader-inner">
-      <div class="loader-icon">🌿</div>
+      <img class="loader-icon" src="img/crisoverde-brasao.png" alt="" width="56" height="56">
       <div class="loader-bar"><div class="loader-fill"></div></div>
     </div>
   </div>
@@ -66,8 +67,8 @@
         <li><a href="#jogos">Jogos</a></li>
         <li><a href="#ods">ODS</a></li>
         <li><a href="#depoimentos">Depoimentos</a></li>
-        <li><a href="#chatbot">🤖 Assistente</a></li>
-          <li><a href="https://crisomoeda.vercel.app/" target="_blank" class="nav-cta">🪙 Crisomoeda</a></li>
+        <li><a href="#chatbot">Assistente</a></li>
+          <li><a href="https://crisomoeda.vercel.app/" target="_blank" class="nav-cta">Crisomoeda</a></li>
       </ul>
       <button class="nav-menu-btn" id="menuBtn" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -80,80 +81,40 @@
         <li><a href="#jogos" class="mob-link">Jogos</a></li>
         <li><a href="#ods" class="mob-link">ODS</a></li>
         <li><a href="#depoimentos" class="mob-link">Depoimentos</a></li>
-        <li><a href="#chatbot" class="mob-link">🤖 Assistente</a></li>
-        <li><a href="https://crisomoeda.vercel.app/" target="_blank" class="mob-link">🪙 Crisomoeda</a></li>
+        <li><a href="#chatbot" class="mob-link">Assistente</a></li>
+        <li><a href="https://crisomoeda.vercel.app/" target="_blank" class="mob-link">Crisomoeda</a></li>
       </ul>
     </div>
   </nav>
 
   <!-- HERO -->
-  <section class="hero hero-centered" id="inicio">
-    <div class="hero-grid-bg"></div>
-    <div class="hero-orbs">
-      <div class="orb orb1"></div>
-      <div class="orb orb2"></div>
-      <div class="orb orb3"></div>
+  <section class="hero" id="inicio" aria-labelledby="heroTitle">
+    <div class="hero-media" aria-hidden="true">
+      <img src="img/hero/hero-limpo.jpg" alt="" class="hero-img" width="1920" height="960">
+      <img src="img/hero/hero-poluido.jpg" alt="" class="hero-img hero-img--dirty" width="1920" height="960" fetchpriority="high">
     </div>
-    <div class="brand-floaters" aria-hidden="true">
-      <img src="img/crisoverde-brasao.png" alt="" class="bf-item" style="top:8%;left:10%;width:46px;opacity:0.12;animation-delay:0.8s;animation-duration:11.2s;">
-      <img src="img/crisoverde-brasao.png" alt="" class="bf-item" style="top:18%;left:84%;width:38px;opacity:0.1;animation-delay:4.6s;animation-duration:8.3s;">
-      <img src="img/crisoverde-brasao.png" alt="" class="bf-item" style="top:70%;left:6%;width:52px;opacity:0.14;animation-delay:3.0s;animation-duration:9.2s;">
-      <img src="img/crisoverde-brasao.png" alt="" class="bf-item" style="top:78%;left:90%;width:34px;opacity:0.11;animation-delay:3.9s;animation-duration:10.9s;">
-      <img src="img/crisoverde-brasao.png" alt="" class="bf-item" style="top:40%;left:4%;width:40px;opacity:0.13;animation-delay:0.6s;animation-duration:7.1s;">
-      <img src="img/crisoverde-brasao.png" alt="" class="bf-item" style="top:88%;left:50%;width:44px;opacity:0.1;animation-delay:5.0s;animation-duration:9.2s;">
-    </div>
+    <canvas class="hero-fog" id="heroFog" aria-hidden="true"></canvas>
     <div class="hero-content">
-      <div class="hero-badge reveal-hero">
-        <span class="badge-dot"></span>
-        ♻ Projeto Educacional &amp; Sustentável · Crisópolis, Bahia
+      <p class="hero-eyebrow" style="--i:0" data-in><img src="img/crisoverde-brasao.png" alt="" width="28" height="28">Crisoverde Digital · Crisópolis, Bahia</p>
+      <h1 class="hero-title" id="heroTitle" style="--i:1" data-in>O futuro não se ensina apenas. <em>Se pratica.</em></h1>
+      <p class="hero-desc" style="--i:2" data-in>Você sabe reciclar… mas será que pratica? Nossa pesquisa mostrou que <strong>74%</strong> da população sabe identificar recicláveis, mas só <strong>13,8%</strong> realiza a separação efetiva. O Crisoverde Digital atua nesse descompasso, com jogos e educação ambiental.</p>
+      <div class="hero-buttons" style="--i:3" data-in>
+        <a href="#proposito" class="btn btn-primary">Conheça o projeto</a>
+        <a href="#jogos" class="btn btn-outline"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="6 4 20 12 6 20 6 4"/></svg>Explorar os jogos</a>
       </div>
-      <h1 class="hero-title reveal-hero delay-1">
-        <span class="criso">CRISO</span><span class="verde">VERDE</span>
-        <span class="digital">DIGITAL</span>
-      </h1>
-      <div class="hero-leaf-spin reveal-hero delay-2">🌿</div>
-      <p class="hero-tagline reveal-hero delay-2">Educar. Conscientizar. <em>Transformar.</em></p>
-      <p class="hero-desc reveal-hero delay-3">
-        Você sabe reciclar… mas será que pratica? Nossa pesquisa revelou que
-        <strong>74%</strong> da população sabe identificar recicláveis, mas apenas
-        <strong>13,8%</strong> realiza a separação efetiva. O Crisoverde Digital
-        atua exatamente nesse descompasso.
+      <p class="hero-links" style="--i:4" data-in>
+        <a href="https://crisomoeda.vercel.app/" target="_blank" rel="noopener">Crisomoeda</a>
+        <a href="https://appcrisoverde-production.up.railway.app" target="_blank" rel="noopener">Acessar o app</a>
       </p>
-      <div class="hero-buttons reveal-hero delay-4">
-        <a href="#proposito" class="btn btn-primary">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/></svg>
-          Conheça o Projeto
-        </a>
-        <a href="#jogos" class="btn btn-outline">🎮 Jogar Agora</a>
-        <a href="https://crisomoeda.vercel.app/" target="_blank" class="btn btn-gold">
-          🪙 Crisomoeda
-        </a>
-        <a href="https://appcrisoverde-production.up.railway.app" target="_blank" rel="noopener" class="btn btn-outline">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
-          Acessar App
-        </a>
-      </div>
-      <div class="hero-stats reveal-hero delay-5">
-        <div class="stat">
-          <span class="stat-num">83,7%</span>
-          <span class="stat-label">Acesso à coleta</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <span class="stat-num">74%</span>
-          <span class="stat-label">Sabem identificar</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <span class="stat-num">13,8%</span>
-          <span class="stat-label">Praticam de fato</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <span class="stat-num">4</span>
-          <span class="stat-label">ODS alinhadas</span>
-        </div>
-      </div>
+    </div>
+    <div class="hero-foot" style="--i:5" data-in>
+      <dl class="hero-stats">
+        <div><dt>Acesso à coleta</dt><dd>83,7%</dd></div>
+        <div><dt>Sabem identificar</dt><dd>74%</dd></div>
+        <div><dt>Praticam de fato</dt><dd>13,8%</dd></div>
+        <div><dt>ODS alinhadas</dt><dd>4</dd></div>
+      </dl>
+      <a href="#proposito" class="hero-cue">Role para explorar<span aria-hidden="true"></span></a>
     </div>
   </section>
 
@@ -168,14 +129,15 @@
           <p class="reveal">Mais do que ensinar, nosso projeto cria experiências práticas e digitais capazes de desenvolver hábitos sustentáveis e gerar impacto positivo na comunidade de Crisópolis e região.</p>
           <p class="reveal">Acreditamos que a mudança começa quando o conhecimento encontra a experiência — e é exatamente isso que construímos: <strong>pontes entre o saber e o fazer.</strong></p>
           <div class="proposito-tags reveal">
-            <span class="ptag">♻ Reciclagem</span>
-            <span class="ptag">📚 Educação</span>
-            <span class="ptag">🌱 Sustentabilidade</span>
-            <span class="ptag">🎮 Gamificação</span>
-            <span class="ptag">🌍 Impacto Social</span>
+            <span class="ptag"> Reciclagem</span>
+            <span class="ptag"> Educação</span>
+            <span class="ptag"> Sustentabilidade</span>
+            <span class="ptag"> Gamificação</span>
+            <span class="ptag"> Impacto Social</span>
           </div>
         </div>
         <div class="proposito-visual reveal delay-2">
+          <figure class="proposito-fig"><img src="img/proposito-problema.jpg" alt="Crisoman e Crisogirl em uma rua tomada pelo lixo" width="1200" height="675" loading="lazy"><figcaption>Crisoman e Crisogirl diante do descarte incorreto de lixo.</figcaption></figure>
           <div class="paradoxo-card">
             <div class="paradoxo-label">O Paradoxo Ambiental</div>
             <div class="paradoxo-stat big">
@@ -194,7 +156,7 @@
               </div>
             </div>
             <div class="paradoxo-footer">
-              💡 O Crisoverde Digital fecha essa lacuna
+               O Crisoverde Digital fecha essa lacuna
             </div>
           </div>
         </div>
@@ -234,14 +196,14 @@
         <div class="cvd-main" id="cvdMain">
           <div class="cvd-main-thumb" data-videoid="videos/crisoman-crisogril.mp4" data-title="Vídeo Institucional" data-desc="Conheça o projeto Crisoverde Digital" data-duration="1:10">
             <div class="cvd-main-overlay"></div>
-            <div class="cvd-main-bg" style="background-image:url('img/thumbs/crisoman-crisogril.jpg');background-size:cover;background-position:center;">
+            <div class="cvd-main-bg" style="background-image:url('img/thumbs/institucional-poster.jpg');background-size:cover;background-position:center;">
               <div class="cvd-main-particles">
                 <div class="cvd-p"></div><div class="cvd-p"></div><div class="cvd-p"></div>
                 <div class="cvd-p"></div><div class="cvd-p"></div>
               </div>
             </div>
             <div class="cvd-main-info">
-              <div class="cvd-main-badge">✓ Disponível</div>
+              <div class="cvd-main-badge"> Disponível</div>
               <h3 class="cvd-main-vtitle">Vídeo Institucional</h3>
               <p class="cvd-main-vdesc">CRISOMAN + CRISOGIRL apresentam a missão do projeto e o impacto na comunidade de Crisópolis.</p>
             </div>
@@ -256,7 +218,7 @@
         <!-- Side thumbnails -->
         <div class="cvd-sidebar">
 
-          <div class="cvd-thumb" data-videoid="videos/roteiro_parte_1.mp4" data-title="Roteiro · Parte 1" data-desc="Primeira parte do roteiro do projeto Crisoverde" data-duration="0:39" data-icon="🎬" data-color="#3ECF8E">
+          <div class="cvd-thumb" data-videoid="videos/roteiro_parte_1.mp4" data-title="Roteiro · Parte 1" data-desc="Primeira parte do roteiro do projeto Crisoverde" data-duration="0:39" data-icon="" data-color="#3ECF8E">
             <div class="cvd-thumb-visual">
               <div class="cvd-thumb-bg" style="--th-color:#3ECF8E20;background-image:url('img/thumbs/roteiro_parte_1.jpg');background-size:cover;background-position:center;">
               </div>
@@ -266,12 +228,12 @@
               <span class="cvd-thumb-dur">0:39</span>
             </div>
             <div class="cvd-thumb-info">
-              <span class="cvd-thumb-cat">🎬 Roteiro · Disponível</span>
+              <span class="cvd-thumb-cat"> Roteiro</span>
               <p class="cvd-thumb-title">Roteiro · Parte 1</p>
             </div>
           </div>
 
-          <div class="cvd-thumb" data-videoid="videos/roteiro_2.mp4" data-title="Roteiro · Parte 2" data-desc="Segunda parte do roteiro do projeto Crisoverde" data-duration="0:39" data-icon="🎬" data-color="#F0C060">
+          <div class="cvd-thumb" data-videoid="videos/roteiro_2.mp4" data-title="Roteiro · Parte 2" data-desc="Segunda parte do roteiro do projeto Crisoverde" data-duration="0:39" data-icon="" data-color="#F0C060">
             <div class="cvd-thumb-visual">
               <div class="cvd-thumb-bg" style="--th-color:#F0C06020;background-image:url('img/thumbs/roteiro_2.jpg');background-size:cover;background-position:center;">
               </div>
@@ -281,23 +243,23 @@
               <span class="cvd-thumb-dur">0:39</span>
             </div>
             <div class="cvd-thumb-info">
-              <span class="cvd-thumb-cat" style="color:#F0C060">🎬 Roteiro · Disponível</span>
+              <span class="cvd-thumb-cat" style="color:#F0C060"> Roteiro</span>
               <p class="cvd-thumb-title">Roteiro · Parte 2</p>
             </div>
           </div>
 
-          <div class="cvd-thumb" data-videoid="" data-title="Depoimentos da Comunidade" data-desc="Alunos e professores falam sobre o impacto real" data-duration="4:00" data-icon="🎤" data-color="#60C0F0">
+          <div class="cvd-thumb" data-videoid="" data-title="Depoimentos da Comunidade" data-desc="Alunos e professores falam sobre o impacto real" data-duration="" data-icon="" data-color="#60C0F0">
             <div class="cvd-thumb-visual">
               <div class="cvd-thumb-bg" style="--th-color:#60C0F020">
-                <span class="cvd-thumb-emoji">🎤</span>
+                <span class="cvd-thumb-emoji"></span>
               </div>
               <button class="cvd-thumb-play" aria-label="Reproduzir">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><polygon points="6 3 20 12 6 21 6 3"/></svg>
               </button>
-              <span class="cvd-thumb-dur">4:00</span>
+              <span class="cvd-thumb-dur">Em breve</span>
             </div>
             <div class="cvd-thumb-info">
-              <span class="cvd-thumb-cat" style="color:#60C0F0">🎤 Depoimentos</span>
+              <span class="cvd-thumb-cat" style="color:#60C0F0"> Depoimentos</span>
               <p class="cvd-thumb-title">Voz da Comunidade</p>
             </div>
           </div>
@@ -313,7 +275,7 @@
           @crisoverde
         </a>
         <a href="https://crisomoeda.vercel.app/" target="_blank" class="cvd-cta-btn cvd-cta-gold">
-          🪙 Crisomoeda
+           Crisomoeda
         </a>
       </div>
     </div>
@@ -328,7 +290,7 @@
       </button>
       <div class="cvd-modal-player" id="cvdModalPlayer">
         <div class="cvd-modal-placeholder">
-          <span style="font-size:3rem">🎬</span>
+          <span style="font-size:3rem"></span>
           <p class="cvd-modal-coming">Vídeo institucional em breve!</p>
           <p class="cvd-modal-sub">Acompanhe nosso Instagram para não perder o lançamento.</p>
           <a href="https://www.instagram.com/crisoverde" target="_blank" rel="noopener" class="cvd-modal-ig">@crisoverde no Instagram</a>
@@ -355,17 +317,17 @@
       <div class="jogos-grid">
 
         <!-- Jogo 1 -->
-        <div class="jogo-card reveal">
+        <div class="jogo-card jogo-card--feature reveal">
           <div class="jogo-img-wrap">
             <img src="img/jogos/operacao-reciclagem.jpg" alt="Operação Reciclagem — jogo de separação de resíduos" class="jogo-img" loading="lazy" width="800" height="450">
           </div>
           <div class="jogo-body">
-            <div class="jogo-tag">⚡ Ação + Raciocínio</div>
+            <div class="jogo-tag"> Ação + Raciocínio</div>
             <h3 class="jogo-title">Operação Reciclagem</h3>
             <p class="jogo-desc">"Separe corretamente o lixo antes que ele polua a cidade!"</p>
             <div class="jogo-meta">
-              <span class="jogo-badge">🎯 Separação Seletiva</span>
-              <span class="jogo-badge">⏱ Contra o tempo</span>
+              <span class="jogo-badge"> Separação Seletiva</span>
+              <span class="jogo-badge"> Contra o tempo</span>
             </div>
             <a href="https://opera-ao-reciclagem1-58u6.vercel.app/" target="_blank" rel="noopener" class="btn btn-primary jogo-btn">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
@@ -380,12 +342,12 @@
             <img src="img/jogos/quiz-sustentavel.jpg" alt="Quiz Sustentável — quiz educativo sobre meio ambiente" class="jogo-img" loading="lazy" width="800" height="450">
           </div>
           <div class="jogo-body">
-            <div class="jogo-tag">💡 Quiz Educativo</div>
+            <div class="jogo-tag"> Quiz Educativo</div>
             <h3 class="jogo-title">Quiz Sustentável</h3>
             <p class="jogo-desc">"Teste seus conhecimentos e descubra o quanto você sabe sobre o planeta."</p>
             <div class="jogo-meta">
-              <span class="jogo-badge">🧠 Conhecimento</span>
-              <span class="jogo-badge">🏆 Ranking</span>
+              <span class="jogo-badge"> Conhecimento</span>
+              <span class="jogo-badge"> Ranking</span>
             </div>
             <a href="https://quizzverde.vercel.app/" target="_blank" rel="noopener" class="btn btn-primary jogo-btn">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
@@ -400,12 +362,12 @@
             <img src="img/jogos/caderno-verde.jpg" alt="Caderno Verde — quiz educativo Crisoverde Digital" class="jogo-img" loading="lazy" width="800" height="450">
           </div>
           <div class="jogo-body">
-            <div class="jogo-tag">💡 Novo Quiz</div>
+            <div class="jogo-tag"> Novo Quiz</div>
             <h3 class="jogo-title">Caderno Verde</h3>
             <p class="jogo-desc">"Um novo desafio para colocar seus conhecimentos sustentáveis à prova."</p>
             <div class="jogo-meta">
-              <span class="jogo-badge">🧠 Conhecimento</span>
-              <span class="jogo-badge">✨ Novidade</span>
+              <span class="jogo-badge"> Conhecimento</span>
+              <span class="jogo-badge"> Novidade</span>
             </div>
             <a href="https://cadernoverde.vercel.app/" target="_blank" rel="noopener" class="btn btn-primary jogo-btn">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
@@ -420,12 +382,12 @@
             <img src="img/jogos/criso-guardian.jpg" alt="Criso Guardian — jogo de ação e estratégia ambiental" class="jogo-img" loading="lazy" width="800" height="450">
           </div>
           <div class="jogo-body">
-            <div class="jogo-tag">⚡ Ação + Estratégia</div>
+            <div class="jogo-tag"> Ação + Estratégia</div>
             <h3 class="jogo-title">Criso Guardian</h3>
             <p class="jogo-desc">"Vista a armadura de guardião e proteja o meio ambiente das ameaças que colocam o planeta em risco!"</p>
             <div class="jogo-meta">
-              <span class="jogo-badge">🛡️ Proteção Ambiental</span>
-              <span class="jogo-badge">✨ Novidade</span>
+              <span class="jogo-badge"> Proteção Ambiental</span>
+              <span class="jogo-badge"> Novidade</span>
             </div>
             <a href="https://criso-guardian.vercel.app/" target="_blank" rel="noopener" class="btn btn-primary jogo-btn">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
@@ -454,40 +416,38 @@
       </div>
       <div class="ods-intro-grid">
         <div class="ods-intro-card reveal">
-          <div class="ods-intro-icon">🌍</div>
-          <h3>O que são as ODS?</h3>
+                    <h3>O que são as ODS?</h3>
           <p>As ODS são metas globais estabelecidas pela ONU para promover o desenvolvimento sustentável até 2030, abrangendo educação, cidades, consumo e ação climática.</p>
         </div>
         <div class="ods-intro-card reveal delay-1">
-          <div class="ods-intro-icon">🌿</div>
-          <h3>ODS e o Crisoverde Digital</h3>
+                    <h3>ODS e o Crisoverde Digital</h3>
           <p>O Crisoverde Digital está alinhado aos ODS ao incentivar educação ambiental, conscientização e desenvolvimento de hábitos sustentáveis nas comunidades.</p>
         </div>
       </div>
       <div class="ods-grid">
         <div class="ods-card reveal" style="--ods-color:#E5243B">
-          <img src="img/ods4.jpeg" alt="ODS 4 — Educação de Qualidade" class="ods-img">
+          <img src="img/ods4.jpeg" alt="ODS 4 — Educação de Qualidade" class="ods-img" width="60" height="60" loading="lazy">
           <div class="ods-num">ODS 4</div>
           <h4>Educação de Qualidade</h4>
           <p class="ods-desc">Promover educação inclusiva, equitativa e de qualidade para todos.</p>
           <p class="ods-rel">O Crisoverde Digital promove educação ambiental acessível e gamificada para toda a comunidade.</p>
         </div>
         <div class="ods-card reveal delay-1" style="--ods-color:#FD9D24">
-          <img src="img/ods11.jpeg" alt="ODS 11 — Cidades Sustentáveis" class="ods-img">
+          <img src="img/ods11.jpeg" alt="ODS 11 — Cidades Sustentáveis" class="ods-img" width="60" height="60" loading="lazy">
           <div class="ods-num">ODS 11</div>
           <h4>Cidades e Comunidades Sustentáveis</h4>
           <p class="ods-desc">Tornar cidades e comunidades mais inclusivas, seguras e sustentáveis.</p>
           <p class="ods-rel">Contribuímos para a gestão adequada de resíduos e limpeza urbana em Crisópolis.</p>
         </div>
         <div class="ods-card reveal delay-2" style="--ods-color:#BF8B2E">
-          <img src="img/ods12.jpeg" alt="ODS 12 — Consumo Responsável" class="ods-img">
+          <img src="img/ods12.jpeg" alt="ODS 12 — Consumo Responsável" class="ods-img" width="60" height="60" loading="lazy">
           <div class="ods-num">ODS 12</div>
           <h4>Consumo e Produção Responsáveis</h4>
           <p class="ods-desc">Garantir padrões sustentáveis de consumo e produção.</p>
           <p class="ods-rel">Nossos jogos incentivam diretamente a reciclagem e o reaproveitamento de materiais.</p>
         </div>
         <div class="ods-card reveal delay-3" style="--ods-color:#3F7E44">
-          <img src="img/ods 13.jpeg" alt="ODS 13 — Ação Climática" class="ods-img">
+          <img src="img/ods 13.jpeg" alt="ODS 13 — Ação Climática" class="ods-img" width="60" height="60" loading="lazy">
           <div class="ods-num">ODS 13</div>
           <h4>Ação Contra a Mudança Climática</h4>
           <p class="ods-desc">Tomar medidas urgentes para combater as mudanças climáticas.</p>
@@ -496,7 +456,7 @@
       </div>
       <div class="ods-cta reveal">
         <a href="https://crisomoeda.vercel.app/" target="_blank" class="btn btn-crisomoeda">
-          🪙 Conheça também a Crisomoeda
+           Conheça também a Crisomoeda
         </a>
       </div>
     </div>
@@ -550,6 +510,17 @@
     </div>
   </section>
 
+  <!-- IMPACTO NA COMUNIDADE — modelo p/ quando as fotos reais chegarem (descomente e preencha)
+  <section class="comunidade" id="comunidade">
+    <div class="container">
+      <div class="section-top reveal"><div class="section-label">Impacto na comunidade</div><h2 class="section-title dark-text">Crisópolis em ação</h2></div>
+      <div class="comunidade-grid">
+        <figure class="reveal"><img src="img/comunidade/foto-01.jpg" alt="DESCREVA A ATIVIDADE" width="1200" height="800" loading="lazy"><figcaption>LEGENDA REAL</figcaption></figure>
+      </div>
+    </div>
+  </section>
+  -->
+
   <!-- CTA CRISOMOEDA -->
   <section class="cta-crisomoeda" id="crisomoeda">
     <div class="hero-grid-bg" style="opacity:0.4"></div>
@@ -563,12 +534,11 @@
       <img src="img/crisoverde-brasao.png" alt="" class="bf-item" style="top:85%;left:85%;width:30px;opacity:0.13;animation-delay:5.5s;animation-duration:11.0s;filter:brightness(0) invert(1);">
     </div>
     <div class="container cta-content">
-      <div class="cta-coin reveal">🪙</div>
-      <div class="section-label light reveal" style="justify-content:center;">Inovação + Sustentabilidade</div>
+            <div class="section-label light reveal" style="justify-content:center;">Inovação + Sustentabilidade</div>
       <h2 class="section-title cta-title reveal">Conheça a <span class="gold-text">Crisomoeda</span></h2>
       <p class="cta-desc reveal">Imagine ser recompensado por fazer o bem ao planeta. A Crisomoeda é nossa forma de reconhecer e valorizar cada ação sustentável — transformando hábitos ecológicos em valor real para quem pratica.</p>
       <a href="https://crisomoeda.vercel.app/" target="_blank" class="btn btn-gold btn-lg reveal">
-        🪙 Acessar a Crisomoeda
+         Acessar a Crisomoeda
       </a>
     </div>
   </section>
@@ -576,133 +546,35 @@
 
 
   <!-- SEÇÃO CHATBOT / CRISO.IA -->
-  <section style="background:#0E3827;padding:60px 0;border-top:1px solid rgba(255,255,255,0.08)" id="chatbot">
-    <div class="container">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start">
-        <div>
-          <div style="display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#5FAE87;margin-bottom:16px">
-            <div style="width:6px;height:6px;background:#5FAE87;border-radius:50%"></div>
-            Assistente Virtual
-          </div>
-          <h2 style="font-family:'Playfair Display',Georgia,serif;font-size:clamp(1.8rem,3.5vw,2.6rem);color:#fff;margin-bottom:14px;line-height:1.2">
-            Conheça a<br><span style="color:#5FAE87">CRISO.IA</span>
-          </h2>
-          <p style="color:#cdd8cf;font-size:.95rem;line-height:1.7;margin-bottom:20px">
-            Nossa assistente de inteligência artificial agora vive em um app próprio, com login, histórico de conversas e uma experiência muito mais completa. Tire dúvidas sobre reciclagem, Crisomoeda, CrisoApp e sustentabilidade — disponível 24h.
-          </p>
-          <div style="display:flex;align-items:flex-start;gap:10px;padding:12px 16px;background:rgba(216,168,62,.08);border:1px solid rgba(216,168,62,.3);border-radius:8px;margin-bottom:28px">
-            <span style="font-size:16px">🧪</span>
-            <span style="font-size:12.5px;color:#E8D4A0;line-height:1.6"><strong>Protótipo em evolução:</strong> a CRISO.IA está em fase de testes e melhorias contínuas. Sua experiência ajuda a gente a evoluir a assistente — encontrou algo estranho? Isso é esperado num protótipo, e todo feedback é bem-vindo.</span>
-          </div>
-          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px">
-            <span style="font-size:12px;padding:6px 14px;border:1px solid rgba(95,174,135,.35);border-radius:20px;color:#B7D9C6;background:rgba(95,174,135,.08)">♻ Reciclagem</span>
-            <span style="font-size:12px;padding:6px 14px;border:1px solid rgba(95,174,135,.35);border-radius:20px;color:#B7D9C6;background:rgba(95,174,135,.08)">🪙 Crisomoeda</span>
-            <span style="font-size:12px;padding:6px 14px;border:1px solid rgba(95,174,135,.35);border-radius:20px;color:#B7D9C6;background:rgba(95,174,135,.08)">📱 CrisoApp</span>
-            <span style="font-size:12px;padding:6px 14px;border:1px solid rgba(95,174,135,.35);border-radius:20px;color:#B7D9C6;background:rgba(95,174,135,.08)">🌍 Meio Ambiente</span>
-          </div>
-          <div style="display:flex;flex-direction:column;gap:12px">
-            <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:8px">
-              <div style="width:36px;height:36px;background:rgba(95,174,135,.14);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px">💬</div>
-              <div>
-                <div style="font-size:13px;font-weight:600;color:#fff;margin-bottom:2px">Respostas instantâneas</div>
-                <div style="font-size:12px;color:#8a9990;line-height:1.5">Responde em segundos sobre qualquer dúvida do projeto</div>
-              </div>
-            </div>
-            <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:8px">
-              <div style="width:36px;height:36px;background:rgba(95,174,135,.14);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px">🤖</div>
-              <div>
-                <div style="font-size:13px;font-weight:600;color:#fff;margin-bottom:2px">IA com contexto do projeto</div>
-                <div style="font-size:12px;color:#8a9990;line-height:1.5">Treinado com todas as informações do ecossistema Crisoverde</div>
-              </div>
-            </div>
-            <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:8px">
-              <div style="width:36px;height:36px;background:rgba(95,174,135,.14);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px">🌿</div>
-              <div>
-                <div style="font-size:13px;font-weight:600;color:#fff;margin-bottom:2px">Especialista em meio ambiente</div>
-                <div style="font-size:12px;color:#8a9990;line-height:1.5">Domina reciclagem, coleta seletiva, sustentabilidade e mais</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- CARD DE ACESSO À CRISO.IA -->
-        <div style="position:relative;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,.14);box-shadow:0 12px 40px rgba(14,56,39,.18);background:#123B29;padding:40px 32px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:20px">
-          <div style="position:absolute;top:18px;right:18px;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#E8D4A0;background:rgba(216,168,62,.12);border:1px solid rgba(216,168,62,.35);padding:5px 12px;border-radius:20px">
-            🧪 Protótipo
-          </div>
-
-          <div style="width:84px;height:84px;border-radius:50%;background:rgba(95,174,135,.14);border:1px solid rgba(95,174,135,.3);display:flex;align-items:center;justify-content:center;overflow:hidden;margin-top:12px">
-            <img src="img/criso-ia-logo.png" alt="CRISO.IA" style="width:100%;height:100%;object-fit:cover">
-          </div>
-
-          <h3 style="font-family:'Playfair Display',Georgia,serif;color:#fff;font-size:1.5rem;margin:0">CRISO.IA</h3>
-          <p style="color:#B7D9C6;font-size:12.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin:-8px 0 0">Sua assistente de sustentabilidade</p>
-
-          <p style="color:#cdd8cf;font-size:.9rem;line-height:1.7;max-width:340px">
-            Crie sua conta gratuita em segundos e comece agora a testar a CRISO.IA — converse, tire dúvidas e explore o ecossistema Crisoverde em um app dedicado.
-          </p>
-
-          <a href="https://crisoverde-bot.vercel.app/" target="_blank" rel="noopener"
-             style="display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;max-width:320px;padding:15px 24px;background:#5FAE87;color:#0E3827;font-weight:700;font-size:.95rem;border-radius:6px;text-decoration:none;transition:transform .2s"
-             onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-            🚀 Acessar a CRISO.IA
-          </a>
-
-          <a href="https://crisoverde-bot.vercel.app/" target="_blank" rel="noopener"
-             style="font-size:12.5px;color:#B7D9C6;text-decoration:underline;text-underline-offset:3px">
-            Ainda não tem conta? Crie grátis e teste agora →
-          </a>
-
-          <div style="width:100%;height:1px;background:rgba(255,255,255,.08);margin:6px 0"></div>
-
-          <p style="font-size:11.5px;color:#8a9990;line-height:1.6;max-width:340px">
-            A CRISO.IA é um protótipo em desenvolvimento contínuo pela equipe do Crisoverde Digital. Algumas funcionalidades ainda estão sendo aprimoradas — obrigado por testar e ajudar a melhorar!
-          </p>
-        </div>
+  <section class="cb" id="chatbot">
+    <div class="container cb-grid">
+      <div>
+        <div class="cb-eyebrow"><i></i>Universo Crisoverde · Assistente Virtual</div>
+        <h2 class="cb-title">Conheça a<br><em>CRISO.IA</em></h2>
+        <p class="cb-text">Nossa assistente de inteligência artificial agora vive em um app próprio, com login, histórico de conversas e uma experiência muito mais completa. Tire dúvidas sobre reciclagem, Crisomoeda, CrisoApp e sustentabilidade — disponível 24h.</p>
+        <p class="cb-note"><strong>Protótipo em evolução:</strong> a CRISO.IA está em fase de testes e melhorias contínuas. Sua experiência ajuda a gente a evoluir a assistente — encontrou algo estranho? Isso é esperado num protótipo, e todo feedback é bem-vindo.</p>
+        <div class="cb-tags"><span>Reciclagem</span><span>Crisomoeda</span><span>CrisoApp</span><span>Meio Ambiente</span></div>
+        <ul class="cb-feats">
+          <li><strong>Respostas instantâneas</strong><span>Responde em segundos sobre qualquer dúvida do projeto</span></li>
+          <li><strong>IA com contexto do projeto</strong><span>Treinado com todas as informações do ecossistema Crisoverde</span></li>
+          <li><strong>Especialista em meio ambiente</strong><span>Domina reciclagem, coleta seletiva, sustentabilidade e mais</span></li>
+        </ul>
+      </div>
+      <div class="cb-card">
+        <span class="cb-badge">Protótipo</span>
+        <img class="cb-logo" src="img/criso-ia-logo.png" alt="CRISO.IA" width="84" height="84" loading="lazy">
+        <h3>CRISO.IA</h3>
+        <p class="cb-sub">Sua assistente de sustentabilidade</p>
+        <p class="cb-text">Crie sua conta gratuita em segundos e comece agora a testar a CRISO.IA — converse, tire dúvidas e explore o ecossistema Crisoverde em um app dedicado.</p>
+        <a class="cb-btn" href="https://crisoverde-bot.vercel.app/" target="_blank" rel="noopener">Acessar a CRISO.IA</a>
+        <a class="cb-link" href="https://crisoverde-bot.vercel.app/" target="_blank" rel="noopener">Ainda não tem conta? Crie grátis e teste agora →</a>
+        <p class="cb-fine">A CRISO.IA é um protótipo em desenvolvimento contínuo pela equipe do Crisoverde Digital. Algumas funcionalidades ainda estão sendo aprimoradas — obrigado por testar e ajudar a melhorar!</p>
       </div>
     </div>
   </section>
   <!-- FIM SEÇÃO CHATBOT -->
 
   <!-- WIDGET FLUTUANTE -->
-  <style>
-    .cv-widget-btn {
-      position: fixed; bottom: 28px; right: 28px;
-      width: 60px; height: 60px; background: #085041;
-      border: none; border-radius: 50%; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 4px 24px rgba(8,80,65,.45); z-index: 9999;
-      transition: transform .2s, box-shadow .2s;
-      text-decoration: none;
-    }
-    .cv-widget-btn:hover { transform: scale(1.08); box-shadow: 0 6px 32px rgba(8,80,65,.6); }
-    .cv-widget-btn img { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; }
-    .cv-widget-badge {
-      position: absolute; top: -2px; right: -2px;
-      width: 16px; height: 16px; background: #5DCAA5;
-      border-radius: 50%; border: 2px solid #fff;
-      animation: pulse-badge 2s infinite;
-    }
-    @keyframes pulse-badge { 0%,100%{opacity:1} 50%{opacity:.5} }
-    .cv-widget-panel {
-      position: fixed; bottom: 100px; right: 28px;
-      width: 380px; height: 580px; border-radius: 16px;
-      overflow: hidden; box-shadow: 0 8px 48px rgba(0,0,0,.28);
-      z-index: 9998; opacity: 0;
-      transform: translateY(20px) scale(.96); pointer-events: none;
-      transition: opacity .25s, transform .25s;
-    }
-    .cv-widget-panel.open { opacity: 1; transform: translateY(0) scale(1); pointer-events: all; }
-    .cv-widget-panel iframe { width: 100%; height: 100%; border: none; }
-    @media (max-width: 480px) {
-      .cv-widget-panel { width: calc(100vw - 24px); right: 12px; bottom: 90px; height: 70vh; }
-      .cv-widget-btn { bottom: 16px; right: 16px; }
-    }
-    @media (max-width: 900px) {
-      #chatbot .container > div { grid-template-columns: 1fr !important; }
-      #chatbot iframe { height: 500px !important; }
-    }
-  </style>
 
   <a class="cv-widget-btn" id="cvWidgetBtn" href="https://crisoverde-bot.vercel.app/" target="_blank" rel="noopener" aria-label="Acessar a CRISO.IA" title="Acessar a CRISO.IA">
     <img src="img/criso-ia-logo.png" alt="CRISO.IA" />
@@ -712,6 +584,7 @@
   <!-- FIM WIDGET -->
 
   <script src="js/main.js" defer></script>
+  <script type="module" src="js/hero.js"></script>
 
 
   <!-- FOOTER -->
@@ -752,12 +625,12 @@
           <h5>Projeto</h5>
           <a href="#jogos">Operação Reciclagem</a>
           <a href="#jogos">Quiz Sustentável</a>
-          <a href="https://crisomoeda.vercel.app/" target="_blank">🪙 Crisomoeda</a>
+          <a href="https://crisomoeda.vercel.app/" target="_blank"> Crisomoeda</a>
           <a href="https://www.instagram.com/crisoverde" target="_blank">Instagram</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <p class="footer-tag">Educar. Conscientizar. Transformar. 🌿</p>
+        <p class="footer-tag">Educar. Conscientizar. Transformar. </p>
         <p>© 2026 Crisoverde Digital. Todos os direitos reservados.</p>
         <p class="footer-dev">
           Desenvolvido por
@@ -767,4 +640,4 @@
     </div>
   </footer>
 </body>
-</html>f
+</html>
