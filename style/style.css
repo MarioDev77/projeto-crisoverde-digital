@@ -301,6 +301,13 @@ button:focus-visible,
   transform: translate3d(0, calc(var(--hero-p, 0) * 5%), 0); will-change: transform;
 }
 .hero-img--dirty { opacity: calc(1 - var(--hero-p, 0) * 1.25); }
+.hero-bg-video {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: 54% 50%;
+  filter: saturate(.88) contrast(1.06);
+}
+@media (max-width: 700px) { .hero-bg-video { object-position: 58% 50%; } }
+@media (prefers-reduced-motion: reduce) { .hero-bg-video { animation: none; } }
 .hero-fog {
   position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none;
   opacity: calc(1 - var(--hero-p, 0) * 1.4);
