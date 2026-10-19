@@ -90,8 +90,8 @@
   <!-- HERO -->
   <section class="hero" id="inicio" aria-labelledby="heroTitle">
     <div class="hero-media" aria-hidden="true">
-      <video class="hero-bg-video" autoplay muted loop playsinline preload="auto" poster="img/hero/hero-poluido.jpg" aria-hidden="true">
-        <source src="videos/hero-cidade-poluida-loop.mp4" type="video/mp4">
+      <video class="hero-bg-video" id="heroVideo" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback controlslist="nodownload nofullscreen noremoteplayback" poster="img/hero/hero-video-poster.jpg?v=2" aria-hidden="true" tabindex="-1">
+        <source src="videos/hero-cidade-poluida-loop.mp4?v=2" type="video/mp4">
       </video>
     </div>
     <canvas class="hero-fog" id="heroFog" aria-hidden="true"></canvas>
@@ -587,6 +587,7 @@
 
   <script src="js/main.js" defer></script>
   <script src="js/hero-atmosphere.js" defer></script>
+  <script src="js/hero-video.js" defer></script>
 
 
   <!-- FOOTER -->
