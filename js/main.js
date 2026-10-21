@@ -117,12 +117,6 @@
 
   /* ── Botão flutuante: agora é um link direto para a CRISO.IA (ver href no HTML) ── */
 
-  /* ── Loader ── */
-  window.addEventListener('load', () => {
-    const loader = document.getElementById('loader');
-    setTimeout(() => loader.classList.add('hidden'), 900);
-  });
-
   /* ── Navbar scroll ── */
   const navbar = document.getElementById('navbar');
   let navTick = false;
@@ -155,8 +149,19 @@
   }, { threshold: 0.1 });
   reveals.forEach(r => observer.observe(r));
 
-  /* Hero reveals immediately */
-  document.querySelectorAll('.reveal-hero').forEach(el => {
-    setTimeout(() => el.classList.add('visible'), 100);
-  });
+  /* Hero anima assim que a vinheta de abertura começa a sair */
+  let heroShown = false;
+  const showHero = () => {
+    if (heroShown) return;
+    heroShown = true;
+    document.querySelectorAll('.reveal-hero').forEach(el => {
+      setTimeout(() => el.classList.add('visible'), 100);
+    });
+  };
+  if (document.getElementById('intro')) {
+    document.addEventListener('intro:leave', showHero, { once: true });
+    setTimeout(showHero, 9000);   // garantia caso a vinheta não rode
+  } else {
+    showHero();
+  }
 })();

@@ -90,28 +90,6 @@ button:focus-visible,
 .container { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
 
 /* ===========================
-   LOADER
-=========================== */
-.loader {
-  position: fixed; inset: 0; z-index: 9999;
-  background: var(--green-deep);
-  display: flex; align-items: center; justify-content: center;
-  transition: opacity 0.5s ease, visibility 0.5s ease;
-}
-.loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-.loader-inner { text-align: center; }
-.loader-icon { font-size: 2.4rem; margin-bottom: 20px; opacity: 0.9; }
-.loader-bar {
-  width: 160px; height: 3px; background: rgba(255,255,255,0.14);
-  border-radius: 2px; overflow: hidden;
-}
-.loader-fill {
-  height: 100%; width: 0; background: var(--green-accent);
-  animation: loadFill 0.8s ease forwards;
-}
-@keyframes loadFill { to { width: 100%; } }
-
-/* ===========================
    NAVBAR
 =========================== */
 .navbar {
@@ -986,7 +964,6 @@ section:not(.hero) .btn-primary:hover { background: #135939; }
 /* ===========================
    3B/3C — propósito, vídeos, jogos, universo, comunidade
 =========================== */
-.loader-icon { width: 56px; height: 56px; margin: 0 auto 20px; object-fit: contain; }
 .proposito-fig { margin-bottom: var(--space-4); border-radius: var(--radius-lg); overflow: hidden; background: var(--green-deep); box-shadow: var(--shadow-soft); }
 .proposito-fig img { width: 100%; height: auto; aspect-ratio: 16/9; object-fit: cover; }
 .proposito-fig figcaption { padding: var(--space-3) var(--space-4); font-size: .8rem; color: var(--gray-light); }

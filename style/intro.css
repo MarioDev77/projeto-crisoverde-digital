@@ -1,0 +1,63 @@
+/* ===========================
+   VINHETA DE ABERTURA (4s) — substitui o antigo loader
+   Linha do tempo: 0-1s floresta · 1-2s folha · 2-3s marca · 3-4s slogan + onda
+=========================== */
+.intro{position:fixed;inset:0;z-index:9999;background:#010a06;overflow:hidden;
+  transition:opacity .7s ease,visibility .7s ease;
+  /* Garantia: se o JS falhar, a vinheta some sozinha */
+  animation:introFailsafe .5s 8s forwards}
+.intro.leaving{opacity:0;visibility:hidden;pointer-events:none}
+html:has(.intro:not(.leaving)){overflow:hidden}
+@keyframes introFailsafe{to{opacity:0;visibility:hidden;pointer-events:none}}
+
+.intro-stage{position:absolute;left:50%;top:50%;translate:-50% -50%;
+  width:min(max(100vw,177.78vh),186vw);aspect-ratio:16/9;overflow:hidden;background:#021109}
+@media (max-aspect-ratio:4/3){
+  .intro-stage{-webkit-mask-image:linear-gradient(to bottom,transparent,#000 14%,#000 86%,transparent);mask-image:linear-gradient(to bottom,transparent,#000 14%,#000 86%,transparent)}
+}
+.intro-cam{position:absolute;inset:0;transform-origin:50% 46%}
+.intro-layer,.intro-reveal,.intro-reveal>.intro-img{position:absolute;inset:0}
+.intro-img{background:url("../img/intro-crisoverde.jpg") center/100% 100% no-repeat}
+
+/* Floresta sem o logo: a área central é mascarada para o logo surgir depois */
+.intro-bg{filter:brightness(.12);
+  -webkit-mask-image:radial-gradient(ellipse 12% 17.5% at 48.7% 27.8%,transparent 85%,#000 100%),radial-gradient(ellipse 29% 12% at 49.8% 50%,transparent 85%,#000 100%),radial-gradient(ellipse 30% 9% at 49.8% 67%,transparent 85%,#000 100%);
+  -webkit-mask-composite:source-in;
+  mask-image:radial-gradient(ellipse 12% 17.5% at 48.7% 27.8%,transparent 85%,#000 100%),radial-gradient(ellipse 29% 12% at 49.8% 50%,transparent 85%,#000 100%),radial-gradient(ellipse 30% 9% at 49.8% 67%,transparent 85%,#000 100%);
+  mask-composite:intersect}
+.intro-leaf{-webkit-mask-image:radial-gradient(ellipse 12% 17.5% at 48.7% 27.8%,#000 80%,transparent 100%),linear-gradient(to bottom,#000 40.8%,transparent 41.7%);-webkit-mask-composite:source-in;mask-image:radial-gradient(ellipse 12% 17.5% at 48.7% 27.8%,#000 80%,transparent 100%),linear-gradient(to bottom,#000 40.8%,transparent 41.7%);mask-composite:intersect}
+.intro-brand{-webkit-mask-image:radial-gradient(ellipse 29% 12% at 49.8% 50%,#000 80%,transparent 100%);mask-image:radial-gradient(ellipse 29% 12% at 49.8% 50%,#000 80%,transparent 100%)}
+.intro-tag{-webkit-mask-image:radial-gradient(ellipse 30% 9% at 49.8% 67%,#000 80%,transparent 100%);mask-image:radial-gradient(ellipse 30% 9% at 49.8% 67%,#000 80%,transparent 100%)}
+.intro-reveal>.intro-img{opacity:0}
+
+.intro-beams{position:absolute;inset:0;opacity:0;mix-blend-mode:screen;background:
+  linear-gradient(115deg,transparent 18%,rgba(243,198,74,.14) 24%,transparent 32%),
+  linear-gradient(105deg,transparent 28%,rgba(61,255,143,.12) 36%,transparent 46%),
+  linear-gradient(125deg,transparent 8%,rgba(61,255,143,.08) 13%,transparent 20%)}
+.intro-halo{position:absolute;left:48.7%;top:27.6%;width:30%;height:42%;translate:-50% -50%;border-radius:50%;opacity:0;mix-blend-mode:screen;
+  background:radial-gradient(closest-side,rgba(93,255,154,.55),rgba(61,255,143,.15) 55%,transparent 100%)}
+.intro-sheen{position:absolute;inset:0;opacity:0;mix-blend-mode:screen;
+  -webkit-mask-image:radial-gradient(ellipse 29% 12% at 49.8% 50%,#000 70%,transparent 100%);mask-image:radial-gradient(ellipse 29% 12% at 49.8% 50%,#000 70%,transparent 100%);
+  background:linear-gradient(100deg,transparent 40%,rgba(255,236,170,.35) 50%,transparent 60%) -120% 0/60% 100% no-repeat}
+.intro-wave{position:absolute;top:-10%;bottom:-10%;left:0;width:34%;opacity:0;mix-blend-mode:screen;transform:translateX(-120%) skewX(-18deg);
+  background:linear-gradient(90deg,transparent,rgba(61,255,143,.22) 50%,transparent)}
+.intro canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;mix-blend-mode:screen}
+.intro-vignette{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 50%,transparent 62%,rgba(0,8,3,.45) 100%)}
+
+.intro.play .intro-cam{animation:introPush 4s cubic-bezier(.45,0,.35,1) forwards}
+.intro.play .intro-bg{animation:introWake 1.4s ease-out forwards}
+.intro.play .intro-beams{animation:introBeams 4s ease-in-out forwards}
+.intro.play .intro-halo{animation:introHalo 1.4s 1s ease-out forwards}
+.intro.play .intro-leaf>.intro-img{animation:introLeaf 1.1s 1s cubic-bezier(.2,.7,.2,1) forwards}
+.intro.play .intro-brand>.intro-img{animation:introRise .9s 2s cubic-bezier(.2,.7,.2,1) forwards}
+.intro.play .intro-sheen{animation:introSheen .9s 2.1s ease-in-out forwards}
+.intro.play .intro-tag>.intro-img{animation:introRise .8s 3s cubic-bezier(.2,.7,.2,1) forwards}
+.intro.play .intro-wave{animation:introWave 1.1s 2.9s ease-in-out forwards}
+@keyframes introPush{from{transform:scale(1)}to{transform:scale(1.045)}}
+@keyframes introWake{from{filter:brightness(.12)}to{filter:brightness(1)}}
+@keyframes introBeams{0%{opacity:0}35%{opacity:1}100%{opacity:.7}}
+@keyframes introHalo{0%{opacity:0;scale:.8}45%{opacity:1}100%{opacity:.25;scale:1}}
+@keyframes introLeaf{0%{opacity:0;transform:translateY(2.2%) scale(.88);filter:blur(12px) brightness(1.9)}60%{opacity:1;filter:blur(2px) brightness(1.35)}100%{opacity:1;transform:none;filter:blur(0) brightness(1)}}
+@keyframes introRise{0%{opacity:0;transform:translateY(1.4%);filter:blur(8px)}100%{opacity:1;transform:none;filter:blur(0)}}
+@keyframes introSheen{0%{opacity:0;background-position:-120% 0}20%{opacity:1}100%{opacity:0;background-position:220% 0}}
+@keyframes introWave{0%{opacity:0;transform:translateX(-120%) skewX(-18deg)}25%{opacity:1}100%{opacity:0;transform:translateX(330%) skewX(-18deg)}}
