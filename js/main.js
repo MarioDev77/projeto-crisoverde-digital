@@ -149,7 +149,7 @@
   }, { threshold: 0.1 });
   reveals.forEach(r => observer.observe(r));
 
-  /* Hero anima assim que a vinheta de abertura começa a sair */
+  /* Hero anima assim que a vinheta de abertura começa a sair (ou de imediato se ela não vai rodar) */
   let heroShown = false;
   const showHero = () => {
     if (heroShown) return;
@@ -158,7 +158,8 @@
       setTimeout(() => el.classList.add('visible'), 100);
     });
   };
-  if (document.getElementById('intro')) {
+  const introEl = document.getElementById('cv-intro');
+  if (introEl && !document.documentElement.classList.contains('cv-intro-skip')) {
     document.addEventListener('intro:leave', showHero, { once: true });
     setTimeout(showHero, 9000);   // garantia caso a vinheta não rode
   } else {
