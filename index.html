@@ -48,110 +48,57 @@
 </head>
 <body>
 
-  <!-- VINHETA DE ABERTURA (≈4,6 s · 1x por sessão) -->
-  <div id="cv-intro" class="cv-intro">
+  <!-- VINHETA DE ABERTURA (≈4 s · 1x por sessão · ver style/intro.css e js/intro.js) -->
+  <div id="cv-intro" class="cv-intro" role="region" aria-label="Abertura Crisoverde Digital">
     <div class="cv-content">
 
-      <div class="cv-bg"></div>
+      <div class="cv-bg" aria-hidden="true"></div>
 
-      <!-- Folha com gota -->
-      <svg class="cv-blade" viewBox="150 470 1050 390" aria-hidden="true" focusable="false">
+      <!-- Linha orgânica: o traçado é calculado em js/intro.js conforme o tamanho da tela -->
+      <svg class="cv-line" aria-hidden="true" focusable="false">
         <defs>
-          <linearGradient id="cv-g-rim" gradientUnits="userSpaceOnUse" x1="190" y1="0" x2="1170" y2="0">
-            <stop offset="0"   stop-color="#5fae45" stop-opacity="0"/>
-            <stop offset=".28" stop-color="#4f9a38" stop-opacity=".55"/>
-            <stop offset=".6"  stop-color="#6fbe4a" stop-opacity=".95"/>
-            <stop offset=".88" stop-color="#a9dc8a"/>
-            <stop offset="1"   stop-color="#dff2cf"/>
+          <linearGradient id="cv-g-line" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0"   stop-color="#4a8f38" stop-opacity="0"/>
+            <stop offset=".24" stop-color="#4a8f38" stop-opacity=".55"/>
+            <stop offset=".64" stop-color="#7fc76b" stop-opacity=".9"/>
+            <stop offset="1"   stop-color="#b9e3a4" stop-opacity="0"/>
           </linearGradient>
-          <linearGradient id="cv-g-body" x1="0" y1="0" x2=".15" y2="1">
-            <stop offset="0"   stop-color="#4fa63a" stop-opacity=".72"/>
-            <stop offset=".45" stop-color="#2a762e" stop-opacity=".32"/>
-            <stop offset="1"   stop-color="#0f3a1a" stop-opacity="0"/>
-          </linearGradient>
-          <linearGradient id="cv-g-fade" gradientUnits="userSpaceOnUse" x1="430" y1="0" x2="1170" y2="0">
-            <stop offset="0"   stop-color="#000"/>
-            <stop offset=".45" stop-color="#fff"/>
-            <stop offset="1"   stop-color="#fff"/>
-          </linearGradient>
-          <mask id="cv-m-body" maskUnits="userSpaceOnUse" x="150" y="470" width="1050" height="390">
-            <rect x="150" y="470" width="1050" height="390" fill="url(#cv-g-fade)"/>
-          </mask>
-          <clipPath id="cv-c-body">
-            <path d="M640,632 C760,632 860,600 960,568 C1040,546 1110,540 1168,541 C1080,600 940,670 800,725 C690,768 560,805 430,832 C520,760 580,690 640,632 Z"/>
-          </clipPath>
-          <radialGradient id="cv-g-drop" cx=".5" cy=".62" r=".6">
-            <stop offset="0"   stop-color="rgb(8,22,12)"    stop-opacity=".95"/>
-            <stop offset=".55" stop-color="rgb(26,62,36)"   stop-opacity=".75"/>
-            <stop offset=".82" stop-color="rgb(96,150,106)" stop-opacity=".75"/>
-            <stop offset="1"   stop-color="rgb(190,228,196)" stop-opacity=".9"/>
-          </radialGradient>
-          <filter id="cv-f-glow" x="-10%" y="-60%" width="120%" height="220%">
-            <feGaussianBlur stdDeviation="7"/>
-          </filter>
         </defs>
-
-        <g mask="url(#cv-m-body)">
-          <path class="cv-body" fill="url(#cv-g-body)"
-                d="M640,632 C760,632 860,600 960,568 C1040,546 1110,540 1168,541 C1080,600 940,670 800,725 C690,768 560,805 430,832 C520,760 580,690 640,632 Z"/>
-          <g class="cv-veins" clip-path="url(#cv-c-body)"></g>
-        </g>
-
-        <path id="cv-midrib" class="cv-midrib" pathLength="1" d="M520,705 C700,705 900,632 1160,543"/>
-        <path class="cv-rim-glow" pathLength="1" d="M190,498 C330,540 470,632 640,632 C760,632 860,600 960,568 C1040,546 1110,540 1168,541"/>
-        <path class="cv-rim" pathLength="1" d="M190,498 C330,540 470,632 640,632 C760,632 860,600 960,568 C1040,546 1110,540 1168,541"/>
-
-        <!-- Gota na ponta da folha -->
-        <g transform="translate(1150 544)">
-          <g class="cv-drop-in"><g class="cv-drop-swell">
-            <ellipse cx="0" cy="29" rx="22" ry="29" fill="url(#cv-g-drop)"/>
-            <ellipse cx="0" cy="29" rx="22" ry="29" fill="none" stroke="rgba(190,225,190,.35)" stroke-width="1"/>
-            <ellipse cx="2" cy="38" rx="11" ry="9" fill="rgba(98,175,74,.32)"/>
-            <ellipse cx="-8" cy="14" rx="4.5" ry="2.6" transform="rotate(-35 -8 14)" fill="rgba(235,248,235,.65)"/>
-          </g></g>
-        </g>
+        <path class="cv-line-glow"  pathLength="1"/>
+        <path class="cv-line-main"  pathLength="1"/>
+        <path class="cv-line-spark" pathLength="1"/>
       </svg>
 
-      <!-- Pontos e pequenas folhas (gerados pelo script.js) -->
+      <!-- Pontos e pequenas folhas (gerados por js/intro.js) -->
       <div class="cv-particles" aria-hidden="true"></div>
 
       <!-- Textos de canto -->
       <div class="cv-corner cv-tl" aria-hidden="true">
-        <span style="--i:0">Educação</span>
-        <span style="--i:1">Socioambiental</span>
-        <span style="--i:2">para um futuro</span>
-        <span style="--i:3">Sustentável</span>
+        <span>Educação</span><span>socioambiental</span><span>para um futuro</span><span>sustentável</span>
       </div>
       <div class="cv-corner cv-tr" aria-hidden="true">
-        <span style="--i:0">Juntos por</span>
-        <span style="--i:1">um planeta</span>
-        <span style="--i:2">melhor</span>
+        <span>Juntos por</span><span>um planeta</span><span>melhor</span>
       </div>
       <div class="cv-corner cv-bl" aria-hidden="true">
-        <span style="--i:0">Reduzir</span>
-        <span style="--i:1">Reutilizar</span>
-        <span style="--i:2">Reciclar</span>
-        <span style="--i:3">Conscientizar</span>
+        <span>Reduzir</span><span>Reutilizar</span><span>Reciclar</span><span>Conscientizar</span>
       </div>
 
-      <!-- Logo + slogan -->
+      <!-- Logo (mesma imagem em três camadas recortadas só para a revelação) + frase -->
       <div class="cv-center">
         <div class="cv-logo">
-          <svg class="cv-ring" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
-            <g><circle cx="100" cy="100" r="92" pathLength="360"/></g>
-          </svg>
           <img class="cv-l-emblem"  src="img/intro-logo.png" alt="Crisoverde Digital" decoding="async">
           <img class="cv-l-word"    src="img/intro-logo.png" alt="" aria-hidden="true" decoding="async">
           <img class="cv-l-digital" src="img/intro-logo.png" alt="" aria-hidden="true" decoding="async">
         </div>
         <p class="cv-tagline">
-          <span style="--i:0">Tecnologia que transforma.</span>
-          <span style="--i:1">Natureza que permanece.</span>
+          <span>Tecnologia que transforma.</span>
+          <span class="cv-t-accent">Natureza que permanece.</span>
         </p>
       </div>
 
-      <div class="cv-progress" aria-hidden="true"></div>
-      <button type="button" class="cv-skip" data-cv-skip>Pular</button>
+      <button type="button" class="cv-skip" data-cv-skip aria-label="Pular abertura (tecla Esc)">
+        <span class="cv-skip-label">Pular</span><kbd aria-hidden="true">Esc</kbd>
+      </button>
     </div>
   </div>
 

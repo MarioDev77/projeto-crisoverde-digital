@@ -1,20 +1,25 @@
 /* ==========================================================================
-   Crisoverde Digital — Vinheta de abertura (substitui a anterior)
+   Crisoverde Digital — Vinheta de abertura
    Todos os seletores usam o prefixo .cv- / #cv-intro para não colidir com
-   os estilos do site. Linha do tempo (aprox. 4,6 s):
+   os estilos do site. Só anima transform, opacity, clip-path e o traçado
+   de uma única linha SVG.
 
-   0,0 s  fundo escuro verde
-   0,2 s  folha desenha o contorno · cantos e barras surgem
-   1,2 s  emblema da folha (logo) aparece · gota se forma
-   2,0 s  nome "CRISOVERDE" revelado da esquerda p/ direita
-   2,7 s  "DIGITAL" abre a partir do centro · slogan
-   3,7 s  saída: conteúdo sobe e some, a vinheta dissolve de baixo p/ cima
+   Linha do tempo (≈ 3,8 s até a página aparecer por completo):
+
+   0,0 s  fundo preto esverdeado surge, luz verde muito sutil
+   0,2 s  emblema da logo entra (fade + leve subida)
+   0,3 s  linha orgânica começa a ser traçada pela tela
+   0,6 s  "CRISOVERDE" revelado da esquerda para a direita
+   0,9 s  um ponto de luz percorre a linha
+   1,0 s  "DIGITAL" abre a partir do centro · textos de canto
+   1,2 s  frase central, uma linha por vez
+   2,9 s  saída: o conteúdo some e a vinheta dissolve sobre o site (≈ 0,9 s)
    ========================================================================== */
 
 :root {
-  --cv-bg: #060b08;          /* fundo amostrado da referência */
-  --cv-green: #498937;       /* verde da logo */
-  --cv-accent: #7fc76b;      /* barras finas dos cantos */
+  --cv-bg: #050a07;          /* preto esverdeado */
+  --cv-green: #4a8f38;       /* verde da logo */
+  --cv-accent: #7fc76b;      /* verde de destaque (linha, frase) */
   --cv-ink: #d9e2d6;         /* texto claro */
   --cv-ease: cubic-bezier(.22, .61, .36, 1);
   --cv-ease-soft: cubic-bezier(.45, .05, .25, 1);
@@ -41,55 +46,48 @@ html.cv-intro-skip #cv-intro { display: none !important; }
   color: var(--cv-ink);
   font-family: "Inter", "Montserrat", "Segoe UI", "Helvetica Neue", Arial, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
-  /* Rede de segurança: se o JS falhar, a vinheta some sozinha após 12 s */
-  animation: cv-failsafe 0s linear 12s forwards;
 }
+
+/* Rede de segurança: enquanto o JS não assumiu o controle (atributo data-cv-ready),
+   a vinheta se dissolve sozinha aos 3,5 s e nunca prende o site. */
+.cv-intro:not([data-cv-ready]) { animation: cv-failsafe .5s linear 3.5s forwards; }
 
 .cv-intro:not(.is-playing) .cv-content { opacity: 0; }
 
 .cv-content { position: absolute; inset: 0; }
 
-.cv-sr {
-  position: absolute; width: 1px; height: 1px; overflow: hidden;
-  clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
-}
-
 /* --------------------------------------------------------------------------
-   Fundo: névoa verde discreta + vinheta nas bordas
+   Fundo: duas luzes verdes quase imperceptíveis + vinheta nas bordas
    -------------------------------------------------------------------------- */
 .cv-bg {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(62% 46% at 45% 72%, rgba(24, 70, 32, .30), transparent 70%),
-    radial-gradient(42% 30% at 50% 30%, rgba(30, 80, 35, .12), transparent 70%),
-    radial-gradient(120% 90% at 50% 50%, transparent 55%, rgba(0, 0, 0, .45) 100%),
+    radial-gradient(46% 38% at 50% 42%, rgba(34, 92, 44, .17), transparent 72%),
+    radial-gradient(70% 34% at 50% 100%, rgba(26, 78, 40, .20), transparent 75%),
+    radial-gradient(130% 100% at 50% 50%, transparent 52%, rgba(0, 0, 0, .50) 100%),
     var(--cv-bg);
 }
 
 /* --------------------------------------------------------------------------
-   Folha com gota (SVG)
+   Linha orgânica (o traçado "d" é calculado em intro.js para cada tela)
    -------------------------------------------------------------------------- */
-.cv-blade {
+.cv-line {
   position: absolute;
-  left: 8.97%;
-  top: 51%;
-  width: 62.8%;
-  aspect-ratio: 1050 / 390;
-  height: auto;
+  inset: 0;
+  width: 100%; height: 100%;
   overflow: visible;
+  pointer-events: none;
 }
+.cv-line path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
 
-.cv-rim, .cv-rim-glow, .cv-midrib { fill: none; stroke-linecap: butt; stroke-linejoin: round; }
-.cv-rim { stroke: url(#cv-g-rim); stroke-width: 2.4; stroke-dasharray: 1; }
-.cv-rim-glow { stroke: url(#cv-g-rim); stroke-width: 9; opacity: .6; stroke-dasharray: 1; filter: url(#cv-f-glow); }
-.cv-midrib { stroke: rgba(150, 210, 110, .30); stroke-width: 1; stroke-dasharray: 1; }
-.cv-veins line { stroke: rgba(140, 200, 100, .17); stroke-width: .8; }
-
-.cv-drop-in, .cv-drop-swell { transform-box: fill-box; transform-origin: 50% 0; }
+.cv-line-glow  { stroke: url(#cv-g-line); stroke-width: 7;   opacity: .16; stroke-dasharray: 1; }
+.cv-line-main  { stroke: url(#cv-g-line); stroke-width: 1.3; opacity: .9;  stroke-dasharray: 1; }
+/* Ponto de luz que percorre a linha; invisível quando não há animação */
+.cv-line-spark { stroke: url(#cv-g-line); stroke-width: 2.2; opacity: 0;   stroke-dasharray: .075 1; }
 
 /* --------------------------------------------------------------------------
-   Partículas (criadas pelo JS): pontos e pequenas folhas
+   Partículas (criadas pelo JS): poucos pontos e folhas, bem discretos
    -------------------------------------------------------------------------- */
 .cv-particles { position: absolute; inset: 0; pointer-events: none; }
 
@@ -98,8 +96,7 @@ html.cv-intro-skip #cv-intro { display: none !important; }
   left: var(--x); top: var(--y);
   width: var(--s); height: var(--s);
   border-radius: 50%;
-  background: rgba(138, 204, 108, .85);
-  box-shadow: 0 0 6px rgba(120, 200, 90, .35);
+  background: rgba(150, 210, 120, .9);
   opacity: var(--o);
   will-change: transform, opacity;
 }
@@ -108,48 +105,44 @@ html.cv-intro-skip #cv-intro { display: none !important; }
   position: absolute;
   left: var(--x); top: var(--y);
   width: var(--s); height: var(--s);
-  fill: rgba(73, 137, 55, .6);
+  fill: rgba(86, 156, 66, .75);
   opacity: var(--o);
   transform: rotate(var(--r));
   will-change: transform, opacity;
 }
 
 /* --------------------------------------------------------------------------
-   Textos de canto (idênticos à referência)
+   Textos de canto: pequenos e de baixa opacidade
    -------------------------------------------------------------------------- */
 .cv-corner {
   position: absolute;
-  font-size: clamp(8px, .66vw, 13px);
-  line-height: 1.65;
+  font-size: clamp(9px, .6vw, 11px);
+  line-height: 1.7;
   font-weight: 500;
-  letter-spacing: .36em;
+  letter-spacing: .3em;
   text-transform: uppercase;
-  color: rgba(217, 226, 214, .78);
+  color: rgba(217, 226, 214, .42);
 }
-
 .cv-corner span { display: block; }
 
+/* pequeno traço verde acima de cada bloco */
 .cv-corner::before {
   content: "";
-  position: absolute;
-  top: 0; bottom: 0;
-  width: 2px;
+  display: block;
+  width: 18px; height: 1px;
+  margin-bottom: 1.1em;
   background: var(--cv-accent);
-  opacity: .85;
-  transform-origin: 50% 0;
+  opacity: .55;
+  transform-origin: 0 50%;
 }
 
-.cv-tl { left: max(3.95vw, env(safe-area-inset-left)); top: max(5.8vh, env(safe-area-inset-top)); padding-left: 2.2em; }
-.cv-tl::before { left: 0; }
-
-.cv-tr { right: max(3.95vw, env(safe-area-inset-right)); top: max(5.8vh, env(safe-area-inset-top)); padding-right: 1.84em; text-align: right; }
-.cv-tr::before { right: 0; }
-
-.cv-bl { left: max(3.9vw, env(safe-area-inset-left)); bottom: max(11.4vh, env(safe-area-inset-bottom)); padding-left: 2.2em; }
-.cv-bl::before { left: 0; }
+.cv-tl { left:  max(3.6vw, env(safe-area-inset-left));  top:    max(5.4vh, env(safe-area-inset-top)); }
+.cv-tr { right: max(3.6vw, env(safe-area-inset-right)); top:    max(5.4vh, env(safe-area-inset-top)); text-align: right; }
+.cv-tr::before { margin-left: auto; transform-origin: 100% 50%; }
+.cv-bl { left:  max(3.6vw, env(safe-area-inset-left));  bottom: max(5.4vh, env(safe-area-inset-bottom)); }
 
 /* --------------------------------------------------------------------------
-   Centro: logo + slogan
+   Centro: logo + frase
    -------------------------------------------------------------------------- */
 .cv-center {
   position: absolute;
@@ -157,17 +150,18 @@ html.cv-intro-skip #cv-intro { display: none !important; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 21.2vh;
+  justify-content: center;
+  padding-bottom: 8vh;       /* centro óptico um pouco acima do meio */
 }
 
 .cv-logo {
   position: relative;
-  width: clamp(240px, 30.5vw, 640px);
+  width: clamp(240px, 27vw, 540px);
   aspect-ratio: 1020 / 464;
 }
 
-/* A mesma imagem original, em três camadas recortadas só para a revelação.
-   Somadas, reproduzem a logo íntegra (formato, cores e proporção). */
+/* A mesma imagem original, sem distorção, em três camadas recortadas só
+   para a revelação. Somadas, reproduzem a logo íntegra. */
 .cv-logo img {
   position: absolute;
   inset: 0;
@@ -180,172 +174,157 @@ html.cv-intro-skip #cv-intro { display: none !important; }
 .cv-l-word    { clip-path: inset(62% 0 15% 0); }
 .cv-l-digital { clip-path: inset(85% 0 0 0); }
 
-/* Anel discreto de três arcos (referência ao ciclo de reciclagem) */
-.cv-ring {
-  position: absolute;
-  left: 50%; top: 30%;
-  width: 32%;
-  aspect-ratio: 1;
-  margin: -16% 0 0 -16%;
-  overflow: visible;
-  pointer-events: none;
-}
-.cv-ring g { transform-box: fill-box; transform-origin: 50% 50%; }
-.cv-ring circle { fill: none; stroke: rgba(127, 199, 107, .30); stroke-width: .8; stroke-dasharray: 95 25; }
-
 .cv-tagline {
-  margin: 4vh 0 0;
-  padding-left: .4em; /* compensa o espaçamento final entre letras */
+  margin: 3.4vh 0 0;
+  padding-left: .32em;       /* compensa o espaçamento final entre letras */
   text-align: center;
-  font-size: clamp(10px, .8vw, 15px);
-  line-height: 1.95;
+  font-size: clamp(10px, .82vw, 15px);
+  line-height: 2;
   font-weight: 500;
-  letter-spacing: .4em;
+  letter-spacing: .32em;
   text-transform: uppercase;
-  color: rgba(220, 230, 216, .82);
+  color: rgba(220, 230, 216, .84);
 }
 .cv-tagline span { display: block; }
+.cv-t-accent { color: #93cf80; }
 
-/* Linha de progresso (ocupa o lugar do indicador de rolagem da referência) */
-.cv-progress {
-  position: absolute;
-  left: 50%;
-  bottom: max(11vh, env(safe-area-inset-bottom));
-  width: 1px; height: 44px;
-  background: rgba(217, 226, 214, .18);
-  overflow: hidden;
-}
-.cv-progress::after {
-  content: "";
-  position: absolute; inset: 0;
-  background: var(--cv-accent);
-  transform-origin: 50% 0;
-}
-
-/* Botão discreto para pular */
+/* --------------------------------------------------------------------------
+   PULAR: discreto, mas com área de toque confortável e sublinhado fixo
+   -------------------------------------------------------------------------- */
 .cv-skip {
   position: absolute;
-  right: max(3.2vw, env(safe-area-inset-right));
-  bottom: max(4vh, env(safe-area-inset-bottom));
-  padding: 1em 1.1em;
+  right:  max(2.6vw, env(safe-area-inset-right));
+  bottom: max(3.6vh, env(safe-area-inset-bottom));
+  display: inline-flex;
+  align-items: center;
+  gap: 1.1em;
+  min-width: 44px; min-height: 44px;
+  padding: .8em 1em;
   border: 0;
   background: none;
-  color: rgba(217, 226, 214, .55);
+  color: rgba(217, 226, 214, .72);
   font: inherit;
-  font-size: clamp(9px, .62vw, 12px);
-  font-weight: 500;
+  font-size: clamp(10px, .72vw, 12px);
+  font-weight: 600;
   letter-spacing: .3em;
   text-transform: uppercase;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
   transition: color .25s;
 }
-.cv-skip:hover { color: rgba(217, 226, 214, .9); }
-.cv-skip:focus-visible { outline: 1px solid var(--cv-accent); outline-offset: 2px; }
+.cv-skip-label {
+  padding-bottom: .35em;
+  background: linear-gradient(var(--cv-accent), var(--cv-accent)) 0 100% / 100% 1px no-repeat;
+  background-color: transparent;
+  opacity: .95;
+}
+.cv-skip kbd {
+  display: none;
+  padding: .25em .6em;
+  border: 1px solid rgba(217, 226, 214, .26);
+  border-radius: 3px;
+  font: inherit;
+  font-size: .86em;
+  letter-spacing: .1em;
+  color: rgba(217, 226, 214, .55);
+}
+@media (hover: hover) and (pointer: fine) { .cv-skip kbd { display: inline-block; } }
+
+.cv-skip:hover { color: #fff; }
+.cv-skip:focus-visible { outline: 1px solid var(--cv-accent); outline-offset: 2px; border-radius: 3px; color: #fff; }
 
 /* --------------------------------------------------------------------------
    Animações de entrada — só os estados "from"; o estado final é o natural.
    Tudo começa junto quando o JS adiciona .is-playing (após a logo carregar).
    -------------------------------------------------------------------------- */
-.is-playing .cv-bg { animation: cv-fade 1s ease both; }
+.is-playing .cv-bg { animation: cv-fade 1.1s ease both; }
 
-.is-playing .cv-rim,
-.is-playing .cv-rim-glow { animation: cv-draw 1.3s var(--cv-ease-soft) .2s both; }
-.is-playing .cv-midrib   { animation: cv-draw 1.1s var(--cv-ease-soft) .8s both; }
-.is-playing .cv-body     { animation: cv-fade 1.2s ease .5s both; }
-.is-playing .cv-veins    { animation: cv-fade 1.1s ease 1s both; }
-.is-playing .cv-drop-in  { animation: cv-drop-in 1.3s cubic-bezier(.2, .8, .2, 1) 1.4s both; }
-.is-playing .cv-drop-swell { animation: cv-swell 4.5s ease-in-out 2.8s infinite alternate; }
+.is-playing .cv-line-glow,
+.is-playing .cv-line-main  { animation: cv-draw 1.7s var(--cv-ease-soft) .3s both; }
+.is-playing .cv-line-spark { animation: cv-spark 1.7s var(--cv-ease-soft) .9s both; }
 
-.is-playing .cv-dot  { animation: cv-fade 1.2s ease var(--d) both, cv-drift var(--t) ease-in-out var(--d) infinite alternate; }
-.is-playing .cv-leaf { animation: cv-fade 1.2s ease var(--d) both, cv-drift-leaf var(--t) ease-in-out var(--d) infinite alternate; }
+.is-playing .cv-dot  { animation: cv-fade 1.4s ease var(--d) both, cv-drift var(--t) ease-in-out var(--d) infinite alternate; }
+.is-playing .cv-leaf { animation: cv-fade 1.4s ease var(--d) both, cv-drift-leaf var(--t) ease-in-out var(--d) infinite alternate; }
 
-.is-playing .cv-corner::before { animation: cv-grow .9s var(--cv-ease) .5s both; }
-.is-playing .cv-corner span    { animation: cv-fade .9s ease calc(.8s + var(--i, 0) * .09s) both; }
+.is-playing .cv-l-emblem  { animation: cv-emblem .9s var(--cv-ease) .2s both; }
+.is-playing .cv-l-word    { animation: cv-wipe-x .8s var(--cv-ease-soft) .6s both; }
+.is-playing .cv-l-digital { animation: cv-digital .65s var(--cv-ease) 1s both; }
 
-.is-playing .cv-ring       { animation: cv-ring-in 1.4s var(--cv-ease) 1s both; }
-.is-playing .cv-ring g     { animation: cv-spin 60s linear infinite; }
-.is-playing .cv-l-emblem   { animation: cv-emblem 1s var(--cv-ease) 1.2s both; }
-.is-playing .cv-l-word     { animation: cv-wipe-x .85s var(--cv-ease-soft) 2s both; }
-.is-playing .cv-l-digital  { animation: cv-digital .6s var(--cv-ease) 2.7s both; }
-.is-playing .cv-tagline span { animation: cv-fade .8s ease calc(2.9s + var(--i, 0) * .15s) both; }
-.is-playing .cv-progress::after { animation: cv-fill 3.4s linear .3s both; }
-.is-playing .cv-skip       { animation: cv-fade .8s ease 1.2s both; }
+.is-playing .cv-tagline span:nth-child(1) { animation: cv-rise .8s var(--cv-ease) 1.2s both; }
+.is-playing .cv-tagline span:nth-child(2) { animation: cv-rise .8s var(--cv-ease) 1.45s both; }
+
+.is-playing .cv-corner::before { animation: cv-grow .8s var(--cv-ease) .8s both; }
+.is-playing .cv-corner span    { animation: cv-fade 1s ease calc(.9s + var(--i, 0) * .08s) both; }
+.is-playing .cv-corner span:nth-child(1) { --i: 0; }
+.is-playing .cv-corner span:nth-child(2) { --i: 1; }
+.is-playing .cv-corner span:nth-child(3) { --i: 2; }
+.is-playing .cv-corner span:nth-child(4) { --i: 3; }
+
+.is-playing .cv-skip { animation: cv-fade .8s ease .4s both; }
 
 @keyframes cv-fade       { from { opacity: 0; } }
 @keyframes cv-draw       { from { stroke-dashoffset: 1; } }
-@keyframes cv-grow       { from { transform: scaleY(0); } }
-@keyframes cv-fill       { from { transform: scaleY(0); } }
-@keyframes cv-spin       { to   { transform: rotate(360deg); } }
-@keyframes cv-ring-in    { from { opacity: 0; transform: rotate(-80deg) scale(.9); } }
-@keyframes cv-emblem     { from { opacity: 0; filter: blur(8px); transform: translate3d(0, 10px, 0) scale(.965); } }
+@keyframes cv-grow       { from { transform: scaleX(0); } }
+@keyframes cv-rise       { from { opacity: 0; transform: translate3d(0, 8px, 0); } }
+@keyframes cv-emblem     { from { opacity: 0; transform: translate3d(0, 10px, 0) scale(.975); } }
 @keyframes cv-wipe-x     { from { opacity: 0; clip-path: inset(62% 100% 15% 0); } }
 @keyframes cv-digital    { from { opacity: 0; clip-path: inset(85% 50% 0 50%); } }
-@keyframes cv-drop-in    { from { transform: scale(0); } }
-@keyframes cv-swell      { to   { transform: scale(1.015, 1.05); } }
-@keyframes cv-drift      { to   { transform: translate3d(var(--dx), var(--dy), 0); } }
-@keyframes cv-drift-leaf { to   { transform: translate3d(var(--dx), var(--dy), 0) rotate(calc(var(--r) + 25deg)); } }
-@keyframes cv-failsafe   { to   { visibility: hidden; pointer-events: none; } }
+@keyframes cv-spark {
+  0%   { opacity: 0;   stroke-dashoffset: .075; }
+  14%  { opacity: .85; }
+  86%  { opacity: .85; }
+  100% { opacity: 0;   stroke-dashoffset: -1; }
+}
+@keyframes cv-drift      { to { transform: translate3d(var(--dx), var(--dy), 0); } }
+@keyframes cv-drift-leaf { to { transform: translate3d(var(--dx), var(--dy), 0) rotate(calc(var(--r) + 22deg)); } }
+@keyframes cv-failsafe   { to { opacity: 0; visibility: hidden; pointer-events: none; } }
 
 /* --------------------------------------------------------------------------
-   Saída: o conteúdo sobe e some; a vinheta dissolve de baixo para cima,
-   com borda suave, revelando a página.
+   Saída: o conteúdo some primeiro e o fundo dissolve em seguida, revelando
+   o site por baixo (que já começa a animar o hero). Só opacity/transform.
    -------------------------------------------------------------------------- */
 .cv-intro.is-leaving {
   pointer-events: none;
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 33.333%, transparent 66.666%, transparent 100%);
-          mask-image: linear-gradient(to bottom, #000 0%, #000 33.333%, transparent 66.666%, transparent 100%);
-  -webkit-mask-size: 100% 300%;          mask-size: 100% 300%;
-  -webkit-mask-repeat: no-repeat;        mask-repeat: no-repeat;
-  animation: cv-leave 1s cubic-bezier(.6, 0, .3, 1) .12s both;
+  animation: cv-leave .8s cubic-bezier(.4, 0, .2, 1) .1s both;
 }
-.cv-intro.is-leaving .cv-content { animation: cv-content-out .75s cubic-bezier(.4, 0, .2, 1) both; }
+.cv-intro.is-leaving .cv-content { animation: cv-content-out .6s cubic-bezier(.4, 0, .2, 1) both; }
 
-@keyframes cv-leave {
-  from { -webkit-mask-position: 0 0%;   mask-position: 0 0%; }
-  to   { -webkit-mask-position: 0 100%; mask-position: 0 100%; }
-}
-@keyframes cv-content-out { to { opacity: 0; transform: translate3d(0, -14px, 0) scale(.992); } }
-@keyframes cv-fade-out    { to { opacity: 0; } }
-
-/* Navegadores sem suporte a máscara: dissolução simples */
-@supports not ((mask-image: linear-gradient(#000, #000)) or (-webkit-mask-image: linear-gradient(#000, #000))) {
-  .cv-intro.is-leaving { animation: cv-fade-out .7s ease .1s both; }
-}
+@keyframes cv-leave       { to { opacity: 0; } }
+@keyframes cv-content-out { to { opacity: 0; transform: translate3d(0, -8px, 0); } }
 
 /* --------------------------------------------------------------------------
-   Celulares (retrato)
+   Tablets e celulares
    -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .cv-logo { width: clamp(240px, 42vw, 440px); }
+  .cv-tagline { font-size: clamp(10px, 1.3vw, 13px); }
+  .cv-corner { font-size: 9px; }
+}
+
 @media (max-width: 640px) {
-  .cv-intro .cv-logo { width: 74vw; }
-  .cv-center  { padding-top: 22vh; }
-  .cv-tagline { margin-top: 3.6vh; font-size: 10px; letter-spacing: .3em; padding-left: .3em; }
-  .cv-blade   { left: -46vw; width: 132vw; top: 57%; }
-  .cv-tl, .cv-tr { top: max(4.5vh, env(safe-area-inset-top)); left: max(5vw, env(safe-area-inset-left)); }
-  .cv-tr { left: auto; right: max(5vw, env(safe-area-inset-right)); }
-  .cv-bl { left: max(5vw, env(safe-area-inset-left)); bottom: max(9vh, env(safe-area-inset-bottom)); }
-  .cv-corner { font-size: 8px; letter-spacing: .3em; }
-  .cv-progress { bottom: max(8vh, env(safe-area-inset-bottom)); }
-  .cv-skip { right: max(4vw, env(safe-area-inset-right)); bottom: max(2.4vh, env(safe-area-inset-bottom)); font-size: 9px; }
+  .cv-logo    { width: 68vw; }
+  .cv-center  { padding-bottom: 10vh; }
+  .cv-tagline { margin-top: 3vh; font-size: 10px; letter-spacing: .24em; padding-left: .24em; }
+  .cv-corner  { font-size: 8px; letter-spacing: .24em; color: rgba(217, 226, 214, .38); }
+  .cv-tl { left:  max(5.5vw, env(safe-area-inset-left));  top: max(4vh, env(safe-area-inset-top)); }
+  .cv-tr { right: max(5.5vw, env(safe-area-inset-right)); top: max(4vh, env(safe-area-inset-top)); }
+  .cv-bl { left:  max(5.5vw, env(safe-area-inset-left));  bottom: max(4vh, env(safe-area-inset-bottom)); }
+  .cv-skip { right: max(3vw, env(safe-area-inset-right)); bottom: max(2.4vh, env(safe-area-inset-bottom)); font-size: 10px; }
 }
 
 /* Celular deitado / telas baixas */
 @media (max-height: 520px) and (orientation: landscape) {
-  .cv-center { padding-top: 14vh; }
-  .cv-logo { width: min(30.5vw, 42vh * 2.2); }
-  .cv-tagline { margin-top: 2.4vh; }
-  .cv-blade { top: 58%; }
+  .cv-center  { padding-bottom: 6vh; }
+  .cv-logo    { width: min(24vw, 30vh * 2.2); }
+  .cv-tagline { margin-top: 2vh; line-height: 1.8; }
+  .cv-bl      { display: none; }
 }
 
 /* --------------------------------------------------------------------------
-   Movimento reduzido: sem animações. A composição aparece estática, fica
-   cerca de 1,4 s na tela e some com um fade curto.
+   Movimento reduzido: sem animações. A composição aparece estática (linha já
+   traçada, sem partículas), fica cerca de 1,4 s e some com um fade curto.
    -------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   .cv-intro *, .cv-intro *::before, .cv-intro *::after { animation: none !important; }
-  .cv-intro { animation: none; }
-  .cv-intro.is-leaving {
-    -webkit-mask-image: none; mask-image: none;
-    animation: cv-fade-out .45s ease both;
-  }
-  .cv-intro.is-leaving .cv-content { animation: none !important; }
+  .cv-intro.is-leaving { animation: cv-leave .4s ease both !important; }
 }

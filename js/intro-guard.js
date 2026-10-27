@@ -7,7 +7,7 @@
     } else {
       // Segura a entrada do hero até a vinheta sair (ver style/intro.css)
       document.documentElement.classList.add('cv-intro-active');
-      setTimeout(function () { document.documentElement.classList.remove('cv-intro-active'); }, 9000); // garantia
+      setTimeout(function () { document.documentElement.classList.remove('cv-intro-active'); }, 4000); // garantia (alinhada à rede de segurança do CSS)
     }
   } catch (e) {}
 })();

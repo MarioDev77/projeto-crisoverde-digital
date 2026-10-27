@@ -161,7 +161,7 @@
   const introEl = document.getElementById('cv-intro');
   if (introEl && !document.documentElement.classList.contains('cv-intro-skip')) {
     document.addEventListener('intro:leave', showHero, { once: true });
-    setTimeout(showHero, 9000);   // garantia caso a vinheta não rode
+    setTimeout(showHero, 4000);   // garantia caso a vinheta não rode
   } else {
     showHero();
   }
